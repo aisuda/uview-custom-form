@@ -1,0 +1,14 @@
+.wrap {
+  padding: 15px;
+}
+.u-flex,
+.u-form-item--right,
+.u-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.u-form-item--right__content {
+  height: 100%;
+}

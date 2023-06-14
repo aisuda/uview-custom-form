@@ -1,0 +1,4412 @@
+// 测试使用
+
+@import 'vk-uview-ui/theme.scss';
+@import 'vk-uview-ui/index.scss';
+@import 'vk-uview-ui/iconfont.css';
+@import 'vk-uview-ui/libs/css/style.components.scss';
+
+.wrap {
+  padding: 30rpx;
+}
+
+.u-tips {
+  font-size: 26rpx;
+  text-align: center;
+  padding: 34rpx 0;
+  line-height: 1.5;
+  color: $u-tips-color;
+}
+
+.u-action-sheet-item {
+  @include vue-flex;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  padding: 34rpx 0;
+  flex-direction: column;
+}
+
+.u-action-sheet-item__subtext {
+  font-size: 24rpx;
+  color: $u-tips-color;
+  margin-top: 20rpx;
+}
+
+.u-gab {
+  height: 12rpx;
+  background-color: rgb(234, 234, 236);
+}
+
+.u-actionsheet-cancel {
+  color: $u-main-color;
+}
+
+.u-alert-tips {
+  @include vue-flex;
+  align-items: center;
+  padding: 16rpx 30rpx;
+  border-radius: 8rpx;
+  position: relative;
+  transition: all 0.3s linear;
+  border: 1px solid #fff;
+
+  &--bg--primary-light {
+    background-color: $u-type-primary-light;
+  }
+
+  &--bg--info-light {
+    background-color: $u-type-info-light;
+  }
+
+  &--bg--success-light {
+    background-color: $u-type-success-light;
+  }
+
+  &--bg--warning-light {
+    background-color: $u-type-warning-light;
+  }
+
+  &--bg--error-light {
+    background-color: $u-type-error-light;
+  }
+
+  &--border--primary-disabled {
+    border-color: $u-type-primary-disabled;
+  }
+
+  &--border--success-disabled {
+    border-color: $u-type-success-disabled;
+  }
+
+  &--border--error-disabled {
+    border-color: $u-type-error-disabled;
+  }
+
+  &--border--warning-disabled {
+    border-color: $u-type-warning-disabled;
+  }
+
+  &--border--info-disabled {
+    border-color: $u-type-info-disabled;
+  }
+}
+
+.u-close-alert-tips {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.u-icon {
+  margin-right: 16rpx;
+}
+
+.u-alert-title {
+  font-size: 28rpx;
+  color: $u-main-color;
+}
+
+.u-alert-desc {
+  font-size: 26rpx;
+  text-align: left;
+  color: $u-content-color;
+}
+
+.u-close-icon {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.u-close-hover {
+  color: red;
+}
+
+.u-close-text {
+  font-size: 24rpx;
+  color: $u-tips-color;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  line-height: 1;
+}
+
+.u-avatar {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: $u-content-color;
+  border-radius: 10px;
+  position: relative;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__sex {
+    position: absolute;
+    width: 32rpx;
+    color: #ffffff;
+    height: 32rpx;
+    @include vue-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100rpx;
+    top: 5%;
+    z-index: 1;
+    right: -7%;
+    border: 1px #ffffff solid;
+
+    &--man {
+      background-color: $u-type-primary;
+    }
+
+    &--woman {
+      background-color: $u-type-error;
+    }
+
+    &--none {
+      background-color: $u-type-warning;
+    }
+  }
+
+  &__level {
+    position: absolute;
+    width: 32rpx;
+    color: #ffffff;
+    height: 32rpx;
+    @include vue-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100rpx;
+    bottom: 5%;
+    z-index: 1;
+    right: -7%;
+    border: 1px #ffffff solid;
+    background-color: $u-type-warning;
+  }
+}
+
+.content {
+  background: rgba(255, 255, 255, 1);
+}
+
+.cropper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+
+.cropper-buttons {
+  background-color: #000000;
+  color: #eee;
+}
+
+.cropper-wrapper {
+  position: relative;
+  @include vue-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #000;
+}
+
+.cropper-buttons {
+  width: 100vw;
+  @include vue-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 28rpx;
+}
+
+.cropper-buttons .upload,
+.cropper-buttons .getCropperImage {
+  width: 50%;
+  text-align: center;
+}
+
+.cropper-buttons .upload {
+  text-align: left;
+  padding-left: 50rpx;
+}
+
+.cropper-buttons .getCropperImage {
+  text-align: right;
+  padding-right: 50rpx;
+}
+
+.u-back-top {
+  width: 80rpx;
+  height: 80rpx;
+  position: fixed;
+  z-index: 9;
+  @include vue-flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e1e1e1;
+  color: $u-content-color;
+  align-items: center;
+  transition: opacity 0.4s;
+
+  &__content {
+    @include vue-flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__tips {
+      font-size: 24rpx;
+      transform: scale(0.8);
+      line-height: 1;
+    }
+  }
+}
+
+.u-badge {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  justify-content: center;
+  align-items: center;
+  line-height: 24rpx;
+  padding: 4rpx 8rpx;
+  border-radius: 100rpx;
+  z-index: 9;
+
+  &--bg--primary {
+    background-color: $u-type-primary;
+  }
+
+  &--bg--error {
+    background-color: $u-type-error;
+  }
+
+  &--bg--success {
+    background-color: $u-type-success;
+  }
+
+  &--bg--info {
+    background-color: $u-type-info;
+  }
+
+  &--bg--warning {
+    background-color: $u-type-warning;
+  }
+}
+
+.u-badge-dot {
+  height: 16rpx;
+  width: 16rpx;
+  border-radius: 100rpx;
+  line-height: 1;
+}
+
+.u-badge-mini {
+  transform: scale(0.8);
+  transform-origin: center center;
+}
+
+// .u-primary {
+// 	background: $u-type-primary;
+// 	color: #fff;
+// }
+
+// .u-error {
+// 	background: $u-type-error;
+// 	color: #fff;
+// }
+
+// .u-warning {
+// 	background: $u-type-warning;
+// 	color: #fff;
+// }
+
+// .u-success {
+// 	background: $u-type-success;
+// 	color: #fff;
+// }
+
+// .u-black {
+// 	background: #585858;
+// 	color: #fff;
+// }
+
+.u-info {
+  background-color: $u-type-info;
+  color: #fff;
+}
+
+.u-btn::after {
+  border: none;
+}
+
+.u-btn {
+  position: relative;
+  border: 0;
+  //border-radius: 10rpx;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  // 避免边框某些场景可能被“裁剪”，不能设置为hidden
+  overflow: visible;
+  line-height: 1;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 40rpx;
+  z-index: 1;
+  box-sizing: border-box;
+  transition: all 0.15s;
+
+  &--bold-border {
+    border: 1px solid #ffffff;
+  }
+
+  &--default {
+    color: $u-content-color;
+    border-color: #c0c4cc;
+    background-color: #ffffff;
+  }
+
+  &--primary {
+    color: #ffffff;
+    border-color: $u-type-primary;
+    background-color: $u-type-primary;
+  }
+
+  &--success {
+    color: #ffffff;
+    border-color: $u-type-success;
+    background-color: $u-type-success;
+  }
+
+  &--error {
+    color: #ffffff;
+    border-color: $u-type-error;
+    background-color: $u-type-error;
+  }
+
+  &--warning {
+    color: #ffffff;
+    border-color: $u-type-warning;
+    background-color: $u-type-warning;
+  }
+
+  &--default--disabled {
+    color: #ffffff;
+    border-color: #e4e7ed;
+    background-color: #ffffff;
+  }
+
+  &--primary--disabled {
+    color: #ffffff !important;
+    border-color: $u-type-primary-disabled !important;
+    background-color: $u-type-primary-disabled !important;
+  }
+
+  &--success--disabled {
+    color: #ffffff !important;
+    border-color: $u-type-success-disabled !important;
+    background-color: $u-type-success-disabled !important;
+  }
+
+  &--error--disabled {
+    color: #ffffff !important;
+    border-color: $u-type-error-disabled !important;
+    background-color: $u-type-error-disabled !important;
+  }
+
+  &--warning--disabled {
+    color: #ffffff !important;
+    border-color: $u-type-warning-disabled !important;
+    background-color: $u-type-warning-disabled !important;
+  }
+
+  &--primary--plain {
+    color: $u-type-primary !important;
+    border-color: $u-type-primary-disabled !important;
+    background-color: $u-type-primary-light !important;
+  }
+
+  &--success--plain {
+    color: $u-type-success !important;
+    border-color: $u-type-success-disabled !important;
+    background-color: $u-type-success-light !important;
+  }
+
+  &--error--plain {
+    color: $u-type-error !important;
+    border-color: $u-type-error-disabled !important;
+    background-color: $u-type-error-light !important;
+  }
+
+  &--warning--plain {
+    color: $u-type-warning !important;
+    border-color: $u-type-warning-disabled !important;
+    background-color: $u-type-warning-light !important;
+  }
+
+  &--info {
+    color: #ffffff;
+    border-color: $u-type-info;
+    background-color: $u-type-info;
+  }
+  &--info--disabled {
+    color: #ffffff !important;
+    border-color: $u-type-info-disabled !important;
+    background-color: $u-type-info-disabled !important;
+  }
+  &--info--plain {
+    color: $u-type-info !important;
+    border-color: $u-type-info-disabled !important;
+    background-color: $u-type-info-light !important;
+  }
+}
+
+.u-hairline-border:after {
+  content: ' ';
+  position: absolute;
+  pointer-events: none;
+  // 设置为border-box，意味着下面的scale缩小为0.5，实际上缩小的是伪元素的内容（border-box意味着内容不含border）
+  box-sizing: border-box;
+  // 中心点作为变形(scale())的原点
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  left: 0;
+  top: 0;
+  width: 199.8%;
+  height: 199.7%;
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  border: 1px solid currentColor;
+  z-index: 1;
+}
+
+.u-wave-ripple {
+  z-index: 0;
+  position: absolute;
+  border-radius: 100%;
+  background-clip: padding-box;
+  pointer-events: none;
+  user-select: none;
+  transform: scale(0);
+  opacity: 1;
+  transform-origin: center;
+}
+
+.u-wave-ripple.u-wave-active {
+  opacity: 0;
+  transform: scale(2);
+  transition: opacity 1s linear, transform 0.4s linear;
+}
+
+.u-round-circle {
+  border-radius: 100rpx;
+}
+
+.u-round-circle::after {
+  border-radius: 100rpx;
+}
+
+.u-loading::after {
+  background-color: hsla(0, 0%, 100%, 0.35);
+}
+
+.u-size-default {
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.u-size-medium {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  width: auto;
+  font-size: 26rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 80rpx;
+}
+
+.u-size-mini {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  width: auto;
+  font-size: 22rpx;
+  padding-top: 1px;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+}
+
+.u-primary-plain-hover {
+  color: #ffffff !important;
+  background: $u-type-primary-dark !important;
+}
+
+.u-default-plain-hover {
+  color: $u-type-primary-dark !important;
+  background: $u-type-primary-light !important;
+}
+
+.u-success-plain-hover {
+  color: #ffffff !important;
+  background: $u-type-success-dark !important;
+}
+
+.u-warning-plain-hover {
+  color: #ffffff !important;
+  background: $u-type-warning-dark !important;
+}
+
+.u-error-plain-hover {
+  color: #ffffff !important;
+  background: $u-type-error-dark !important;
+}
+
+.u-info-plain-hover {
+  color: #ffffff !important;
+  background: $u-type-info-dark !important;
+}
+
+.u-default-hover {
+  color: $u-type-primary-dark !important;
+  border-color: $u-type-primary-dark !important;
+  background-color: $u-type-primary-light !important;
+}
+
+.u-primary-hover {
+  background: $u-type-primary-dark !important;
+  color: #fff;
+}
+
+.u-success-hover {
+  background: $u-type-success-dark !important;
+  color: #fff;
+}
+
+.u-info-hover {
+  background: $u-type-info-dark !important;
+  color: #fff;
+}
+
+.u-warning-hover {
+  background: $u-type-warning-dark !important;
+  color: #fff;
+}
+
+.u-error-hover {
+  background: $u-type-error-dark !important;
+  color: #fff;
+}
+
+.u-calendar {
+  color: $u-content-color;
+
+  &__header {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 30rpx;
+    background-color: #fff;
+    color: $u-main-color;
+
+    &__text {
+      margin-top: 30rpx;
+      padding: 0 60rpx;
+      @include vue-flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__action {
+    padding: 40rpx 0 40rpx 0;
+
+    &__icon {
+      margin: 0 16rpx;
+    }
+
+    &__text {
+      padding: 0 16rpx;
+      color: $u-main-color;
+      font-size: 32rpx;
+      line-height: 32rpx;
+      font-weight: bold;
+    }
+  }
+
+  &__week-day {
+    @include vue-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    overflow: hidden;
+
+    &__text {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    @include vue-flex;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+
+    &--end-date {
+      border-top-right-radius: 8rpx;
+      border-bottom-right-radius: 8rpx;
+    }
+
+    &--start-date {
+      border-top-left-radius: 8rpx;
+      border-bottom-left-radius: 8rpx;
+    }
+
+    &__item {
+      width: 14.2857%;
+      @include vue-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+
+      &__inner {
+        height: 84rpx;
+        @include vue-flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 32rpx;
+        position: relative;
+        border-radius: 50%;
+
+        &__desc {
+          width: 100%;
+          font-size: 24rpx;
+          line-height: 24rpx;
+          transform: scale(0.75);
+          transform-origin: center center;
+          position: absolute;
+          left: 0;
+          text-align: center;
+          bottom: 2rpx;
+        }
+      }
+
+      &__tips {
+        width: 100%;
+        font-size: 24rpx;
+        line-height: 24rpx;
+        position: absolute;
+        left: 0;
+        transform: scale(0.8);
+        transform-origin: center center;
+        text-align: center;
+        bottom: 8rpx;
+        z-index: 2;
+      }
+    }
+
+    &__bg-month {
+      position: absolute;
+      font-size: 130px;
+      line-height: 130px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #e4e7ed;
+      z-index: 1;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    @include vue-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 0 40rpx 30rpx;
+    box-sizing: border-box;
+    font-size: 24rpx;
+    color: $u-tips-color;
+
+    &__choose {
+      height: 50rpx;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}
+
+.u-keyboard-grids {
+  background: rgb(215, 215, 217);
+  padding: 24rpx 0;
+  position: relative;
+}
+
+.u-keyboard-grids-item {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-keyboard-grids-btn {
+  text-decoration: none;
+  width: 62rpx;
+  flex: 0 0 64rpx;
+  height: 80rpx;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #fff;
+  margin: 8rpx 5rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 0rpx #888992;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.u-carinput-hover {
+  background-color: rgb(185, 188, 195) !important;
+}
+
+.u-keyboard-back {
+  position: absolute;
+  width: 96rpx;
+  right: 22rpx;
+  bottom: 32rpx;
+  height: 80rpx;
+  background-color: rgb(185, 188, 195);
+  @include vue-flex;
+  align-items: center;
+  border-radius: 8rpx;
+  justify-content: center;
+  box-shadow: 0 2rpx 0rpx #888992;
+}
+
+.u-keyboard-change {
+  font-size: 24rpx;
+  box-shadow: 0 2rpx 0rpx #888992;
+  position: absolute;
+  width: 96rpx;
+  left: 22rpx;
+  line-height: 1;
+  bottom: 32rpx;
+  height: 80rpx;
+  background-color: #ffffff;
+  @include vue-flex;
+  align-items: center;
+  border-radius: 8rpx;
+  justify-content: center;
+}
+
+.u-keyboard-change .inactive.zh {
+  transform: scale(0.85) translateY(-10rpx);
+}
+
+.u-keyboard-change .inactive.en {
+  transform: scale(0.85) translateY(10rpx);
+}
+
+.u-keyboard-change .active {
+  color: rgb(237, 112, 64);
+  font-size: 30rpx;
+}
+
+.u-keyboard-change .zh {
+  transform: translateY(-10rpx);
+}
+
+.u-keyboard-change .en {
+  transform: translateY(10rpx);
+}
+
+.u-card {
+  position: relative;
+  overflow: hidden;
+  font-size: 28rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+
+  &-full {
+    // 如果是与屏幕之间不留空隙，应该设置左右边距为0
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+  }
+
+  &--border:after {
+    border-radius: var(--radius, 16rpx);
+  }
+
+  &__head {
+    &--left {
+      color: $u-main-color;
+
+      &__thumb {
+        margin-right: 16rpx;
+      }
+
+      &__title {
+        max-width: 400rpx;
+      }
+    }
+
+    &--right {
+      color: $u-tips-color;
+      margin-left: 6rpx;
+    }
+  }
+
+  &__body {
+    color: $u-content-color;
+  }
+
+  &__foot {
+    color: $u-tips-color;
+  }
+}
+
+.u-cell-box {
+  width: 100%;
+}
+
+.u-cell-title {
+  padding: 30rpx 32rpx 10rpx 32rpx;
+  font-size: 30rpx;
+  text-align: left;
+  color: $u-tips-color;
+}
+
+.u-cell-item-box {
+  background-color: #ffffff;
+  flex-direction: row;
+}
+
+.u-cell {
+  @include vue-flex;
+  align-items: center;
+  position: relative;
+  /* #ifndef APP-NVUE */
+  box-sizing: border-box;
+  /* #endif */
+  width: 100%;
+  padding: 26rpx 32rpx;
+  font-size: 28rpx;
+  line-height: 54rpx;
+  color: $u-content-color;
+  background-color: #fff;
+  text-align: left;
+}
+
+.u-cell_title {
+  font-size: 28rpx;
+}
+
+.u-cell__left-icon-wrap {
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+
+.u-cell__right-icon-wrap {
+  margin-left: 10rpx;
+  color: #969799;
+  font-size: 28rpx;
+}
+
+.u-cell__left-icon-wrap,
+.u-cell__right-icon-wrap {
+  @include vue-flex;
+  align-items: center;
+  height: 48rpx;
+}
+
+.u-cell-border:after {
+  position: absolute;
+  /* #ifndef APP-NVUE */
+  box-sizing: border-box;
+  content: ' ';
+  pointer-events: none;
+  border-bottom: 1px solid $u-border-color;
+  /* #endif */
+  right: 0;
+  left: 0;
+  top: 0;
+  transform: scaleY(0.5);
+}
+
+.u-cell-border {
+  position: relative;
+}
+
+.u-cell__label {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: $u-tips-color;
+  /* #ifndef APP-NVUE */
+  word-wrap: break-word;
+  /* #endif */
+}
+
+.u-cell__value {
+  overflow: hidden;
+  text-align: right;
+  /* #ifndef APP-NVUE */
+  vertical-align: middle;
+  /* #endif */
+  color: $u-tips-color;
+  font-size: 26rpx;
+}
+
+.u-cell__title,
+.u-cell__value {
+  flex: 1;
+}
+
+.u-cell--required {
+  /* #ifndef APP-NVUE */
+  overflow: visible;
+  /* #endif */
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-cell--required:before {
+  position: absolute;
+  /* #ifndef APP-NVUE */
+  content: '*';
+  /* #endif */
+  left: 8px;
+  margin-top: 4rpx;
+  font-size: 14px;
+  color: $u-type-error;
+}
+
+.u-cell_right {
+  line-height: 1;
+}
+
+.u-checkbox {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  line-height: 1.8;
+
+  &__icon-wrap {
+    color: $u-content-color;
+    flex: none;
+    display: -webkit-flex;
+    @include vue-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 42rpx;
+    height: 42rpx;
+    color: transparent;
+    text-align: center;
+    transition-property: color, border-color, background-color;
+    font-size: 20px;
+    border: 1px solid #c8c9cc;
+    transition-duration: 0.2s;
+
+    /* #ifdef MP-TOUTIAO */
+    // 头条小程序兼容性问题，需要设置行高为0，否则图标偏下
+    &__icon {
+      line-height: 0;
+    }
+    /* #endif */
+
+    &--circle {
+      border-radius: 100%;
+    }
+
+    &--square {
+      border-radius: 6rpx;
+    }
+
+    &--checked {
+      color: #fff;
+      background-color: $u-type-primary;
+      border-color: $u-type-primary;
+    }
+
+    &--disabled {
+      background-color: #ebedf0;
+      border-color: #c8c9cc;
+    }
+
+    &--disabled--checked {
+      color: #c8c9cc !important;
+    }
+  }
+
+  &__label {
+    word-wrap: break-word;
+    margin-left: 10rpx;
+    margin-right: 24rpx;
+    color: $u-content-color;
+    font-size: 30rpx;
+
+    &--disabled {
+      color: #c8c9cc;
+    }
+  }
+}
+
+.u-checkbox-group {
+  /* #ifndef MP || APP-NVUE */
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* #endif */
+}
+.u-checkbox-group.flex-end {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  /* #endif */
+}
+
+.u-circle-progress {
+  position: relative;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+  justify-content: center;
+}
+
+.u-canvas-bg {
+  position: absolute;
+}
+
+.u-canvas {
+  position: absolute;
+}
+
+.u-col {
+  /* #ifdef MP-WEIXIN || MP-QQ || MP-TOUTIAO */
+  float: left;
+  /* #endif */
+}
+
+.u-col-0 {
+  width: 0;
+}
+
+.u-col-1 {
+  width: calc(100% / 12);
+}
+
+.u-col-2 {
+  width: calc(100% / 12 * 2);
+}
+
+.u-col-3 {
+  width: calc(100% / 12 * 3);
+}
+
+.u-col-4 {
+  width: calc(100% / 12 * 4);
+}
+
+.u-col-5 {
+  width: calc(100% / 12 * 5);
+}
+
+.u-col-6 {
+  width: calc(100% / 12 * 6);
+}
+
+.u-col-7 {
+  width: calc(100% / 12 * 7);
+}
+
+.u-col-8 {
+  width: calc(100% / 12 * 8);
+}
+
+.u-col-9 {
+  width: calc(100% / 12 * 9);
+}
+
+.u-col-10 {
+  width: calc(100% / 12 * 10);
+}
+
+.u-col-11 {
+  width: calc(100% / 12 * 11);
+}
+
+.u-col-12 {
+  width: calc(100% / 12 * 12);
+}
+
+.u-collapse-head {
+  position: relative;
+  @include vue-flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $u-main-color;
+  font-size: 30rpx;
+  line-height: 1;
+  padding: 24rpx 0;
+  text-align: left;
+}
+
+.u-collapse-title {
+  flex: 1;
+  overflow: hidden;
+}
+
+.u-arrow-down-icon {
+  transition: all 0.3s;
+  margin-right: 20rpx;
+  margin-left: 14rpx;
+}
+
+.u-arrow-down-icon-active {
+  transform: rotate(180deg);
+  transform-origin: center center;
+}
+
+.u-collapse-body {
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.u-collapse-content {
+  overflow: hidden;
+  font-size: 28rpx;
+  color: $u-tips-color;
+  text-align: left;
+}
+
+.u-notice-bar {
+  width: 100%;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 18rpx 24rpx;
+  overflow: hidden;
+}
+
+.u-swiper {
+  font-size: 26rpx;
+  height: 32rpx;
+  @include vue-flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 12rpx;
+}
+
+.u-swiper-item {
+  @include vue-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.u-news-item {
+  overflow: hidden;
+}
+
+.u-right-icon {
+  margin-left: 12rpx;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+}
+
+.u-left-icon {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+}
+
+.u-count-num {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  text-align: center;
+}
+
+.u-divider {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.u-divider-line {
+  border-bottom: 1px solid $u-border-color;
+  transform: scale(1, 0.5);
+  transform-origin: center;
+
+  &--bordercolor--primary {
+    border-color: $u-type-primary;
+  }
+
+  &--bordercolor--success {
+    border-color: $u-type-success;
+  }
+
+  &--bordercolor--error {
+    border-color: $u-type-primary;
+  }
+
+  &--bordercolor--info {
+    border-color: $u-type-info;
+  }
+
+  &--bordercolor--warning {
+    border-color: $u-type-warning;
+  }
+}
+
+.u-divider-text {
+  white-space: nowrap;
+  padding: 0 16rpx;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+}
+
+.u-dropdown {
+  flex: 1;
+  width: 100%;
+  position: relative;
+
+  &__menu {
+    @include vue-flex;
+    position: relative;
+    z-index: 11;
+    height: 80rpx;
+
+    &__item {
+      flex: 1;
+      @include vue-flex;
+      justify-content: center;
+      align-items: center;
+
+      &__text {
+        font-size: 28rpx;
+        color: $u-content-color;
+      }
+
+      &__arrow {
+        margin-left: 6rpx;
+        transition: transform 0.3s;
+        align-items: center;
+        @include vue-flex;
+
+        &--rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 8;
+    width: 100%;
+    left: 0px;
+    bottom: 0;
+    overflow: hidden;
+
+    &__mask {
+      position: absolute;
+      z-index: 9;
+      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    &__popup {
+      position: relative;
+      z-index: 10;
+      transition: all 0.3s;
+      transform: translate3D(0, -100%, 0);
+      overflow: hidden;
+    }
+  }
+}
+
+.u-empty {
+  @include vue-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.u-image {
+  margin-bottom: 20rpx;
+}
+
+.u-slot-wrap {
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.u-field {
+  font-size: 28rpx;
+  padding: 20rpx 28rpx;
+  text-align: left;
+  position: relative;
+  color: $u-main-color;
+}
+
+.u-field-inner {
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-textarea-inner {
+  align-items: flex-start;
+}
+
+.u-textarea-class {
+  min-height: 96rpx;
+  width: auto;
+  font-size: 28rpx;
+}
+
+.fild-body {
+  @include vue-flex;
+  flex: 1;
+  align-items: center;
+}
+
+.u-arror-right {
+  margin-left: 8rpx;
+}
+
+.u-label-text {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+}
+
+.u-label-left-gap {
+  margin-left: 6rpx;
+}
+
+.u-label-postion-top {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.u-label {
+  width: 130rpx;
+  flex: 1 1 130rpx;
+  text-align: left;
+  position: relative;
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-required::before {
+  content: '*';
+  position: absolute;
+  left: -16rpx;
+  font-size: 14px;
+  color: $u-type-error;
+  height: 9px;
+  line-height: 1;
+}
+
+.u-field__input-wrap {
+  position: relative;
+  overflow: hidden;
+  font-size: 28rpx;
+  height: 48rpx;
+  flex: 1;
+  width: auto;
+}
+
+.u-clear-icon {
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-error-message {
+  color: $u-type-error;
+  font-size: 26rpx;
+  text-align: left;
+}
+
+.placeholder-style {
+  color: rgb(150, 151, 153);
+}
+
+.u-input-class {
+  font-size: 28rpx;
+}
+
+.u-button-wrap {
+  margin-left: 8rpx;
+}
+
+.u-form-item {
+  @include vue-flex;
+  // align-items: flex-start;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: $u-main-color;
+  box-sizing: border-box;
+  line-height: $u-form-item-height;
+  flex-direction: column;
+
+  &__border-bottom--error:after {
+    border-color: $u-type-error;
+  }
+
+  &__body {
+    @include vue-flex;
+  }
+
+  &--left {
+    @include vue-flex;
+    align-items: center;
+
+    &__content {
+      position: relative;
+      @include vue-flex;
+      align-items: center;
+      padding-right: 10rpx;
+      flex: 1;
+
+      &__icon {
+        margin-right: 8rpx;
+      }
+
+      &--required {
+        position: absolute;
+        left: -16rpx;
+        vertical-align: middle;
+        color: $u-type-error;
+        padding-top: 6rpx;
+      }
+
+      &__label {
+        @include vue-flex;
+        align-items: center;
+        flex: 1;
+      }
+    }
+  }
+
+  &--right {
+    flex: 1;
+
+    &__content {
+      @include vue-flex;
+      align-items: center;
+      flex: 1;
+
+      &__slot {
+        flex: 1;
+        /* #ifndef MP */
+        @include vue-flex;
+        align-items: center;
+        /* #endif */
+      }
+
+      &__icon {
+        margin-left: 10rpx;
+        color: $u-light-color;
+        font-size: 30rpx;
+      }
+    }
+  }
+
+  &__message {
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: $u-type-error;
+    margin-top: 12rpx;
+  }
+}
+
+.u-full-content {
+  background-color: #00c777;
+}
+
+.u-update-content {
+  font-size: 26rpx;
+  color: $u-content-color;
+  line-height: 1.7;
+  padding: 30rpx;
+}
+
+.u-grid {
+  width: 100%;
+  /* #ifdef MP */
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* #endif */
+
+  /* #ifndef MP */
+  @include vue-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* #endif */
+}
+
+.u-grid-item {
+  box-sizing: border-box;
+  background: #fff;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+
+  /* #ifdef MP */
+  position: relative;
+  float: left;
+  /* #endif */
+}
+
+.u-grid-item-hover {
+  background: #f7f7f7 !important;
+}
+
+.u-grid-marker-box {
+  position: absolute;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  line-height: 0;
+}
+
+.u-grid-marker-wrap {
+  position: absolute;
+}
+
+.u-grid-item-box {
+  padding: 30rpx 0;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.u-icon {
+  display: inline-flex;
+  align-items: center;
+
+  &--left {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &--right {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &--top {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  &--bottom {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__icon {
+    position: relative;
+
+    &--primary {
+      color: $u-type-primary;
+    }
+
+    &--success {
+      color: $u-type-success;
+    }
+
+    &--error {
+      color: $u-type-error;
+    }
+
+    &--warning {
+      color: $u-type-warning;
+    }
+
+    &--info {
+      color: $u-type-info;
+    }
+  }
+
+  &__decimal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__img {
+    height: auto;
+    will-change: transform;
+  }
+
+  &__label {
+    line-height: 1;
+  }
+}
+
+.u-image {
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__loading,
+  &__error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include vue-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $u-bg-color;
+    color: $u-tips-color;
+    font-size: 46rpx;
+  }
+}
+
+.u-index-anchor {
+  box-sizing: border-box;
+  padding: 14rpx 24rpx;
+  color: #606266;
+  width: 100%;
+  font-weight: 500;
+  font-size: 28rpx;
+  line-height: 1.2;
+  background-color: rgb(245, 245, 245);
+}
+
+.u-index-anchor--active {
+  right: 0;
+  left: 0;
+  color: #2979ff;
+  background-color: #fff;
+}
+
+.u-index-bar {
+  position: relative;
+}
+
+.u-index-bar__sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  @include vue-flex;
+  flex-direction: column;
+  text-align: center;
+  transform: translateY(-50%);
+  user-select: none;
+  z-index: 99;
+}
+
+.u-index-bar__index {
+  font-weight: 500;
+  padding: 8rpx 18rpx;
+  font-size: 22rpx;
+  line-height: 1;
+}
+
+.u-indexed-list-alert {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  right: 90rpx;
+  top: 50%;
+  margin-top: -60rpx;
+  border-radius: 24rpx;
+  font-size: 50rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.65);
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 9999999;
+}
+
+.u-indexed-list-alert text {
+  line-height: 50rpx;
+}
+
+.u-input {
+  position: relative;
+  flex: 1;
+  @include vue-flex;
+
+  &__input {
+    //height: $u-form-item-height;
+    font-size: 28rpx;
+    color: $u-main-color;
+    flex: 1;
+  }
+
+  &__textarea {
+    width: auto;
+    font-size: 28rpx;
+    color: $u-main-color;
+    padding: 10rpx 0;
+    line-height: normal;
+    flex: 1;
+  }
+
+  &--border {
+    border-radius: 6rpx;
+    border-radius: 4px;
+    border: 1px solid $u-form-item-border-color;
+  }
+
+  &--error {
+    border-color: $u-type-error !important;
+  }
+
+  &__right-icon {
+    &__item {
+      margin-left: 10rpx;
+    }
+
+    &--select {
+      transition: transform 0.4s;
+
+      &--reverse {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
+
+.u-keyboard {
+  position: relative;
+  z-index: 1003;
+}
+
+.u-tooltip {
+  @include vue-flex;
+  justify-content: space-between;
+}
+
+.u-tooltip-item {
+  color: #333333;
+  flex: 0 0 33.333333%;
+  text-align: center;
+  padding: 20rpx 10rpx;
+  font-size: 28rpx;
+}
+
+.u-tooltips-submit {
+  text-align: right;
+  flex-grow: 1;
+  flex-wrap: 0;
+  padding-right: 40rpx;
+  color: $u-type-primary;
+}
+
+.u-tooltip-cancel {
+  text-align: left;
+  flex-grow: 1;
+  flex-wrap: 0;
+  padding-left: 40rpx;
+  color: #888888;
+}
+
+.u-tooltips-submit-hover {
+  color: $u-type-success;
+}
+
+.u-tooltip-cancel-hover {
+  color: #333333;
+}
+
+.u-wrap {
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.u-lazy-item {
+  width: 100%;
+  // 骗系统开启硬件加速
+  transform: transition3d(0, 0, 0);
+  // 防止图片加载“闪一下”
+  will-change: transform;
+  /* #ifndef APP-NVUE */
+  display: block;
+  /* #endif */
+}
+
+.u-line {
+  vertical-align: middle;
+}
+
+.u-progress {
+  overflow: hidden;
+  height: 15px;
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+  width: 100%;
+  border-radius: 100rpx;
+}
+
+.u-active {
+  width: 0;
+  height: 100%;
+  align-items: center;
+  @include vue-flex;
+  justify-items: flex-end;
+  justify-content: space-around;
+  font-size: 20rpx;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+
+.u-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 39px 39px;
+}
+
+.u-striped-active {
+  animation: progress-stripes 2s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 39px 0;
+  }
+}
+
+.u-link {
+  line-height: 1;
+}
+
+.u-loading-circle {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  vertical-align: middle;
+  width: 28rpx;
+  height: 28rpx;
+  background: 0 0;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: #e5e5e5 #e5e5e5 #e5e5e5 #8f8d8e;
+  animation: u-circle 1s linear infinite;
+}
+
+.u-loading-flower {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: u-flower 1s steps(12) infinite;
+  animation: u-flower 1s steps(12) infinite;
+  background: transparent
+    url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=)
+    no-repeat;
+  background-size: 100%;
+}
+
+@keyframes u-flower {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes u-circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}
+
+/* #ifdef MP */
+// 在mp.scss中，赋予了u-line为flex: 1，这里需要一个明确的长度，所以重置掉它
+// 在组件内部，把组件名(u-line)当做选择器，在微信开发工具会提示不合法，但不影响使用
+u-line {
+  flex: none;
+}
+/* #endif */
+
+.u-load-more-wrap {
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-load-more-inner {
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rpx;
+}
+
+.u-more {
+  position: relative;
+  @include vue-flex;
+  justify-content: center;
+}
+
+.u-dot-text {
+  font-size: 28rpx;
+}
+
+.u-loadmore-icon-wrap {
+  margin-right: 8rpx;
+}
+
+.u-loadmore-icon {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: transform 0.3s;
+}
+
+.u-mask-show {
+  opacity: 1;
+}
+
+.u-mask-zoom {
+  transform: scale(1.2, 1.2);
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.u-char-box {
+  text-align: center;
+}
+
+.u-char-flex {
+  @include vue-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.u-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  z-index: 9;
+  opacity: 0;
+  background: none;
+}
+
+.u-char-item {
+  position: relative;
+  width: 90rpx;
+  height: 90rpx;
+  margin: 10rpx 10rpx;
+  font-size: 60rpx;
+  font-weight: bold;
+  color: $u-main-color;
+  line-height: 90rpx;
+  @include vue-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-middle-line {
+  border: none;
+}
+
+.u-box {
+  box-sizing: border-box;
+  border: 2rpx solid #cccccc;
+  border-radius: 6rpx;
+}
+
+.u-box-active {
+  overflow: hidden;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  border: 2rpx solid $u-type-primary;
+}
+
+.u-middle-line-active {
+  background: $u-type-primary;
+}
+
+.u-breathe {
+  animation: breathe 2s infinite ease;
+}
+
+.u-placeholder-line {
+  /* #ifndef APP-NVUE */
+  display: none;
+  /* #endif */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rpx;
+  height: 40rpx;
+  background: #333333;
+  animation: twinkling 1.5s infinite ease;
+}
+
+.u-animation-breathe {
+  animation-name: breathe;
+}
+
+.u-dot {
+  font-size: 34rpx;
+  line-height: 34rpx;
+}
+
+.u-middle-line {
+  height: 4px;
+  background: #000000;
+  width: 80%;
+  position: absolute;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.u-bottom-line-active {
+  background: $u-type-primary;
+}
+
+.u-bottom-line {
+  height: 4px;
+  background: #000000;
+  width: 80%;
+  position: absolute;
+  border-radius: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.u-model {
+  height: auto;
+  overflow: hidden;
+  font-size: 32rpx;
+  background-color: #fff;
+
+  &__btn--hover {
+    background-color: rgb(230, 230, 230);
+  }
+
+  &__title {
+    padding-top: 48rpx;
+    font-weight: 500;
+    text-align: center;
+    color: $u-main-color;
+  }
+
+  &__content {
+    &__message {
+      padding: 48rpx;
+      font-size: 30rpx;
+      text-align: center;
+      color: $u-content-color;
+    }
+  }
+
+  &__footer {
+    @include vue-flex;
+
+    &__button {
+      flex: 1;
+      height: 100rpx;
+      line-height: 100rpx;
+      font-size: 32rpx;
+      box-sizing: border-box;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 4rpx;
+    }
+  }
+}
+
+.u-navbar {
+  width: 100%;
+}
+
+.u-navbar-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 991;
+}
+
+.u-status-bar {
+  width: 100%;
+}
+
+.u-navbar-inner {
+  @include vue-flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+}
+
+.u-back-wrap {
+  @include vue-flex;
+  align-items: center;
+  flex: 1;
+  flex-grow: 0;
+  padding: 14rpx 14rpx 14rpx 24rpx;
+}
+
+.u-back-text {
+  padding-left: 4rpx;
+  font-size: 30rpx;
+}
+
+.u-navbar-content-title {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.u-navbar-centent-slot {
+  flex: 1;
+}
+
+.u-title {
+  line-height: 60rpx;
+  font-size: 32rpx;
+  flex: 1;
+}
+
+.u-navbar-right {
+  flex: 1;
+  @include vue-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.u-slot-content {
+  flex: 1;
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-no-network {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.u-inner {
+  height: 100vh;
+  @include vue-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -15%;
+}
+
+.u-tips {
+  color: $u-tips-color;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+}
+
+.u-error-icon {
+  width: 300rpx;
+}
+
+.u-to-setting {
+  color: $u-light-color;
+  font-size: 26rpx;
+}
+
+.u-setting-btn {
+  font-size: 26rpx;
+  color: $u-type-primary;
+}
+
+.u-retry {
+  margin-top: 30rpx;
+  border: 1px solid $u-tips-color;
+  color: $u-tips-color;
+  font-size: 28rpx;
+  padding: 6rpx 30rpx;
+  border-radius: 3px;
+}
+
+.u-retry-hover {
+  color: #fff;
+  background-color: $u-tips-color;
+}
+
+.u-notice-bar-wrap {
+  overflow: hidden;
+}
+
+.u-notice-bar {
+  padding: 18rpx 24rpx;
+  overflow: hidden;
+}
+
+.u-direction-row {
+  @include vue-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.u-left-icon {
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-notice-box {
+  flex: 1;
+  @include vue-flex;
+  overflow: hidden;
+  margin-left: 12rpx;
+}
+
+.u-right-icon {
+  margin-left: 12rpx;
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-notice-content {
+  line-height: 1;
+  white-space: nowrap;
+  font-size: 26rpx;
+  animation: u-loop-animation 10s linear infinite both;
+  text-align: right;
+  // 这一句很重要，为了能让滚动左右连接起来
+  padding-left: 100%;
+}
+
+@keyframes u-loop-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.u-numberbox {
+  display: inline-flex;
+  align-items: center;
+}
+
+.u-number-input {
+  position: relative;
+  text-align: center;
+  padding: 0;
+  margin: 0 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-icon-plus,
+.u-icon-minus {
+  width: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.u-icon-plus {
+  border-radius: 0 8rpx 8rpx 0;
+}
+
+.u-icon-minus {
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.u-icon-disabled {
+  color: #c8c9cc !important;
+  background: #f7f8fa !important;
+}
+
+.u-input-disabled {
+  color: #c8c9cc !important;
+  background-color: #f2f3f5 !important;
+}
+/* #ifdef H5 */
+.num-btn {
+  font-weight: 550;
+  position: relative;
+  top: -4rpx;
+}
+/* #endif */
+/* #ifndef H5 */
+.num-btn {
+  font-weight: 550;
+  position: relative;
+  top: 0rpx;
+}
+/* #endif */
+
+.u-keyboard {
+  position: relative;
+  z-index: 1003;
+}
+
+.u-keyboard-grids {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.u-keyboard-grids-item {
+  flex: 0 0 33.3333333333%;
+  text-align: center;
+  font-size: 50rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110rpx;
+  font-weight: 500;
+}
+
+.u-bg-gray {
+  background-color: #e7e6eb;
+}
+
+.u-keyboard-back {
+  font-size: 36rpx;
+}
+
+.u-keyboard-hover {
+  background-color: #e7e6eb;
+}
+
+/* 在这里引入自定义样式 */
+
+/* 链接和图片效果 */
+._a {
+  display: inline;
+  padding: 1.5px 0 1.5px 0;
+  color: #366092;
+  word-break: break-all;
+}
+
+._hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+
+._img {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* #ifdef MP-WEIXIN */
+:host {
+  display: inline;
+}
+
+/* #endif */
+
+/* #ifndef MP-ALIPAY || APP-PLUS */
+.interlayer {
+  display: inherit;
+  flex-direction: inherit;
+  flex-wrap: inherit;
+  align-content: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  white-space: inherit;
+}
+
+/* #endif */
+
+._b,
+._strong {
+  font-weight: bold;
+}
+
+/* #ifndef MP-ALIPAY */
+._blockquote,
+._div,
+._p,
+._ol,
+._ul,
+._li {
+  display: block;
+}
+
+/* #endif */
+
+._code {
+  font-family: monospace;
+}
+
+._del {
+  text-decoration: line-through;
+}
+
+._em,
+._i {
+  font-style: italic;
+}
+
+._h1 {
+  font-size: 2em;
+}
+
+._h2 {
+  font-size: 1.5em;
+}
+
+._h3 {
+  font-size: 1.17em;
+}
+
+._h5 {
+  font-size: 0.83em;
+}
+
+._h6 {
+  font-size: 0.67em;
+}
+
+._h1,
+._h2,
+._h3,
+._h4,
+._h5,
+._h6 {
+  display: block;
+  font-weight: bold;
+}
+
+._image {
+  display: block;
+  width: 100%;
+  height: 360px;
+  margin-top: -360px;
+  opacity: 0;
+}
+
+._ins {
+  text-decoration: underline;
+}
+
+._li {
+  flex: 1;
+  width: 0;
+}
+
+._ol-bef {
+  width: 36px;
+  margin-right: 5px;
+  text-align: right;
+}
+
+._ul-bef {
+  display: block;
+  margin: 0 12px 0 23px;
+  line-height: normal;
+}
+
+._ol-bef,
+._ul-bef {
+  flex: none;
+  user-select: none;
+}
+
+._ul-p1 {
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  overflow: hidden;
+  line-height: 0.3em;
+}
+
+._ul-p2 {
+  display: inline-block;
+  width: 0.23em;
+  height: 0.23em;
+  border: 0.05em solid black;
+  border-radius: 50%;
+}
+
+._q::before {
+  content: '"';
+}
+
+._q::after {
+  content: '"';
+}
+
+._sub {
+  font-size: smaller;
+  vertical-align: sub;
+}
+
+._sup {
+  font-size: smaller;
+  vertical-align: super;
+}
+
+/* #ifdef MP-ALIPAY || APP-PLUS || QUICKAPP-WEBVIEW */
+._abbr,
+._b,
+._code,
+._del,
+._em,
+._i,
+._ins,
+._label,
+._q,
+._span,
+._strong,
+._sub,
+._sup {
+  display: inline;
+}
+
+/* #endif */
+
+/* #ifdef MP-WEIXIN || MP-QQ */
+.__bdo,
+.__bdi,
+.__ruby,
+.__rt {
+  display: inline-block;
+}
+
+/* #endif */
+._video {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 225px;
+  background-color: black;
+}
+
+._video::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -15px 0 0 -15px;
+  content: '';
+  border-color: transparent transparent transparent white;
+  border-style: solid;
+  border-width: 15px 0 15px 30px;
+}
+
+@keyframes _show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* #ifdef MP-WEIXIN */
+:host {
+  display: block;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* #endif */
+
+.u-datetime-picker {
+  position: relative;
+  z-index: 999;
+}
+
+.u-picker-view {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.u-picker-header {
+  width: 100%;
+  height: 90rpx;
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  background: #fff;
+  position: relative;
+}
+
+.u-picker-header::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1rpx solid #eaeef1;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.u-picker__title {
+  color: $u-content-color;
+}
+
+.u-picker-body {
+  width: 100%;
+  height: 500rpx;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.u-column-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: $u-main-color;
+  padding: 0 8rpx;
+}
+
+.u-text {
+  font-size: 24rpx;
+  padding-left: 8rpx;
+}
+
+.u-btn-picker {
+  padding: 16rpx;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+.u-opacity {
+  opacity: 0.5;
+}
+
+.u-btn-picker--primary {
+  color: $u-type-primary;
+}
+
+.u-btn-picker--tips {
+  color: $u-tips-color;
+}
+
+.u-drawer {
+  /* #ifndef APP-NVUE */
+  display: block;
+  /* #endif */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.u-drawer-content {
+  /* #ifndef APP-NVUE */
+  display: block;
+  /* #endif */
+  position: absolute;
+  z-index: 1003;
+  transition: all 0.25s linear;
+}
+
+.u-drawer__scroll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.u-drawer-left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+}
+
+.u-drawer-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #ffffff;
+}
+
+.u-drawer-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+}
+
+.u-drawer-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+}
+
+.u-drawer-center {
+  @include vue-flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: 99999;
+}
+
+.u-mode-center-box {
+  min-width: 100rpx;
+  min-height: 100rpx;
+  /* #ifndef APP-NVUE */
+  display: block;
+  /* #endif */
+  position: relative;
+  background-color: #ffffff;
+}
+
+.u-drawer-content-visible.u-drawer-center {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.u-animation-zoom {
+  transform: scale(1.15);
+}
+
+.u-drawer-content-visible {
+  transform: translate3D(0px, 0px, 0px) !important;
+}
+
+.u-close {
+  position: absolute;
+  z-index: 3;
+}
+
+.u-close--top-left {
+  top: 30rpx;
+  left: 30rpx;
+}
+
+.u-close--top-right {
+  top: 30rpx;
+  right: 30rpx;
+}
+
+.u-close--bottom-left {
+  bottom: 30rpx;
+  left: 30rpx;
+}
+
+.u-close--bottom-right {
+  right: 30rpx;
+  bottom: 30rpx;
+}
+
+.u-radio {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  line-height: 1.8;
+
+  &__icon-wrap {
+    color: $u-content-color;
+    @include vue-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 42rpx;
+    height: 42rpx;
+    color: transparent;
+    text-align: center;
+    transition-property: color, border-color, background-color;
+    font-size: 20px;
+    border: 1px solid #c8c9cc;
+    transition-duration: 0.2s;
+
+    /* #ifdef MP-TOUTIAO */
+    // 头条小程序兼容性问题，需要设置行高为0，否则图标偏下
+    &__icon {
+      line-height: 0;
+    }
+    /* #endif */
+
+    &--circle {
+      border-radius: 100%;
+    }
+
+    &--square {
+      border-radius: 3px;
+    }
+
+    &--checked {
+      color: #fff;
+      background-color: #2979ff;
+      border-color: #2979ff;
+    }
+
+    &--disabled {
+      background-color: #ebedf0;
+      border-color: #c8c9cc;
+    }
+
+    &--disabled--checked {
+      color: #c8c9cc !important;
+    }
+  }
+
+  &__label {
+    word-wrap: break-word;
+    margin-left: 10rpx;
+    margin-right: 24rpx;
+    color: $u-content-color;
+    font-size: 30rpx;
+
+    &--disabled {
+      color: #c8c9cc;
+    }
+  }
+}
+
+.u-radio-group {
+  /* #ifndef MP || APP-NVUE */
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* #endif */
+}
+.u-radio-group.flex-end {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  /* #endif */
+}
+
+.u-rate {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.u-icon {
+  box-sizing: border-box;
+}
+
+.u-content {
+  font-size: 30rpx;
+  color: $u-content-color;
+  line-height: 1.8;
+  text-align: left;
+  overflow: hidden;
+
+  &__show-more {
+    padding-top: 0;
+    background: none;
+    margin-top: 20rpx;
+  }
+
+  &__showmore-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 26rpx;
+    @include vue-flex;
+    align-items: center;
+    justify-content: center;
+
+    &__readmore-btn {
+      @include vue-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+
+      &__icon {
+        margin-left: 14rpx;
+      }
+    }
+  }
+}
+
+.u-row {
+  // 由于微信小程序编译后奇怪的页面结构，只能使用float布局实现，flex无法实现
+  /* #ifndef MP-WEIXIN || MP-QQ || MP-TOUTIAO */
+  @include vue-flex;
+  /* #endif */
+  flex-wrap: wrap;
+}
+
+.u-row:after {
+  /* #ifdef MP-WEIXIN || MP-QQ || MP-TOUTIAO */
+  display: table;
+  clear: both;
+  content: '';
+  /* #endif */
+}
+
+.u-notice-bar {
+  padding: 18rpx 24rpx;
+  overflow: hidden;
+}
+
+.u-direction-row {
+  @include vue-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.u-left-icon {
+  /* #ifndef APP-NVUE */
+  display: inline-flex;
+  /* #endif */
+  align-items: center;
+}
+
+.u-notice-box {
+  flex: 1;
+  @include vue-flex;
+  overflow: hidden;
+  margin-left: 12rpx;
+}
+
+.u-right-icon {
+  margin-left: 12rpx;
+  display: inline-flex;
+  align-items: center;
+}
+
+.u-notice-content {
+  animation: u-loop-animation 10s linear infinite both;
+  text-align: right;
+  // 这一句很重要，为了能让滚动左右连接起来
+  padding-left: 100%;
+  @include vue-flex;
+  flex-wrap: nowrap;
+}
+
+.u-notice-text {
+  font-size: 26rpx;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+@keyframes u-loop-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.u-search {
+  @include vue-flex;
+  align-items: center;
+  flex: 1;
+}
+
+.u-content {
+  @include vue-flex;
+  align-items: center;
+  padding: 0 18rpx;
+  flex: 1;
+}
+
+.u-clear-icon {
+  @include vue-flex;
+  align-items: center;
+}
+
+.u-input {
+  flex: 1;
+  font-size: 28rpx;
+  line-height: 1;
+  margin: 0 10rpx;
+  color: $u-tips-color;
+}
+
+.u-close-wrap {
+  width: 40rpx;
+  height: 100%;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.u-placeholder-class {
+  color: $u-tips-color;
+}
+
+.u-action {
+  font-size: 28rpx;
+  color: $u-main-color;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.u-action-active {
+  width: 80rpx;
+  margin-left: 10rpx;
+}
+
+.u-section {
+  @include vue-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  &__title {
+    position: relative;
+    font-size: 28rpx;
+    padding-left: 20rpx;
+    @include vue-flex;
+    align-items: center;
+
+    &__icon-wrap {
+      position: absolute;
+    }
+
+    &__text {
+      line-height: 1;
+    }
+  }
+
+  &__right-info {
+    color: $u-tips-color;
+    font-size: 26rpx;
+    @include vue-flex;
+    align-items: center;
+
+    &__icon-arrow {
+      margin-left: 6rpx;
+    }
+  }
+}
+
+.u-select {
+  &__action {
+    position: relative;
+    line-height: $u-form-item-height;
+    height: $u-form-item-height;
+
+    &__icon {
+      position: absolute;
+      right: 20rpx;
+      top: 50%;
+      transition: transform 0.4s;
+      transform: translateY(-50%);
+      z-index: 1;
+
+      &--reverse {
+        transform: rotate(-180deg) translateY(50%);
+      }
+    }
+  }
+
+  &__hader {
+    &__title {
+      color: $u-content-color;
+    }
+  }
+
+  &--border {
+    border-radius: 6rpx;
+    border-radius: 4px;
+    border: 1px solid $u-form-item-border-color;
+  }
+
+  &__header {
+    @include vue-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80rpx;
+    padding: 0 40rpx;
+  }
+
+  &__body {
+    width: 100%;
+    height: 500rpx;
+    overflow: hidden;
+    background-color: #fff;
+
+    &__picker-view {
+      height: 100%;
+      box-sizing: border-box;
+
+      &__item {
+        @include vue-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32rpx;
+        color: $u-main-color;
+        padding: 0 8rpx;
+      }
+    }
+  }
+}
+
+.skeleton-fade {
+  width: 100%;
+  height: 100%;
+  background: rgb(194, 207, 214);
+  animation-duration: 1.5s;
+  animation-name: blink;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.u-slider {
+  position: relative;
+  border-radius: 999px;
+  border-radius: 999px;
+  background-color: #ebedf0;
+}
+
+.u-slider:before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  content: '';
+  top: -8px;
+  bottom: -8px;
+  z-index: -1;
+}
+
+.u-slider__gap {
+  position: relative;
+  border-radius: inherit;
+  transition: width 0.2s;
+  transition: width 0.2s;
+  background-color: #1989fa;
+}
+
+.u-slider__button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.u-slider__button-wrap {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate3d(50%, -50%, 0);
+}
+
+.u-slider--disabled {
+  opacity: 0.5;
+}
+
+$u-steps-item-number-width: 44rpx;
+$u-steps-item-dot-width: 20rpx;
+
+.u-steps {
+  @include vue-flex;
+
+  .u-steps__item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    min-width: 100rpx;
+    font-size: 26rpx;
+    color: #8799a3;
+    @include vue-flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    &--row {
+      @include vue-flex;
+      flex-direction: column;
+
+      .u-steps__item__line {
+        position: absolute;
+        z-index: 0;
+        left: 75%;
+        width: 50%;
+
+        &--dot {
+          top: calc(#{$u-steps-item-dot-width} / 2);
+        }
+
+        &--number {
+          top: calc(#{$u-steps-item-number-width} / 2);
+        }
+      }
+    }
+
+    &--column {
+      @include vue-flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      min-height: 120rpx;
+
+      .u-steps__item__line {
+        position: absolute;
+        z-index: 0;
+        height: 50%;
+        top: 75%;
+
+        &--dot {
+          left: calc(#{$u-steps-item-dot-width} / 2);
+        }
+
+        &--number {
+          left: calc(#{$u-steps-item-number-width} / 2);
+        }
+      }
+    }
+
+    &__num {
+      @include vue-flex;
+      align-items: center;
+      justify-content: center;
+      width: $u-steps-item-number-width;
+      height: $u-steps-item-number-width;
+      border: 1px solid #8799a3;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    &__dot {
+      width: $u-steps-item-dot-width;
+      height: $u-steps-item-dot-width;
+      @include vue-flex;
+      border-radius: 50%;
+    }
+
+    &__text--row {
+      margin-top: 14rpx;
+    }
+
+    &__text--column {
+      margin-left: 14rpx;
+    }
+  }
+}
+
+.u-sticky {
+  z-index: 9999999999;
+}
+
+.u-subsection {
+  @include vue-flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.u-item {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  height: 100%;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  color: $u-main-color;
+  padding: 0 6rpx;
+  position: relative;
+}
+
+.u-item-bg {
+  background-color: $u-type-primary;
+  position: absolute;
+  z-index: -1;
+}
+
+.u-none-border-right {
+  border-right: none !important;
+}
+
+.u-item-first {
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+
+.u-item-last {
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+
+.u-item-text {
+  transition: all 0.35s;
+  color: $u-main-color;
+  @include vue-flex;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+
+.u-swipe-action {
+  width: auto;
+  height: initial;
+  position: relative;
+  overflow: hidden;
+}
+
+.u-swipe-view {
+  @include vue-flex;
+  height: initial;
+  position: relative;
+  /* 这一句很关键，覆盖默认的绝对定位 */
+}
+
+.u-swipe-content {
+  flex: 1;
+}
+
+.u-swipe-del {
+  position: relative;
+  font-size: 30rpx;
+  color: #ffffff;
+}
+
+.u-btn-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.u-swiper-wrap {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.u-swiper-image {
+  width: 100%;
+  will-change: transform;
+  height: 100%;
+  /* #ifndef APP-NVUE */
+  display: block;
+  /* #endif */
+  /* #ifdef H5 */
+  pointer-events: none;
+  /* #endif */
+}
+
+.u-swiper-indicator {
+  padding: 0 24rpx;
+  position: absolute;
+  @include vue-flex;
+  width: 100%;
+  z-index: 1;
+}
+
+.u-indicator-item-rect {
+  width: 26rpx;
+  height: 8rpx;
+  margin: 0 6rpx;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.u-indicator-item-rect-active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.u-indicator-item-dot {
+  width: 14rpx;
+  height: 14rpx;
+  margin: 0 6rpx;
+  border-radius: 20rpx;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.u-indicator-item-dot-active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.u-indicator-item-round {
+  width: 14rpx;
+  height: 14rpx;
+  margin: 0 6rpx;
+  border-radius: 20rpx;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.u-indicator-item-round-active {
+  width: 34rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.u-indicator-item-number {
+  padding: 6rpx 16rpx;
+  line-height: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 100rpx;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.u-list-scale {
+  transform-origin: center center;
+}
+
+.u-list-image-wrap {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  transition: all 0.5s;
+  overflow: hidden;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.u-swiper-title {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 28rpx;
+  padding: 12rpx 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.u-swiper-item {
+  @include vue-flex;
+  overflow: hidden;
+  align-items: center;
+}
+
+.u-switch {
+  position: relative;
+  /* #ifndef APP-NVUE */
+  display: inline-block;
+  /* #endif */
+  box-sizing: initial;
+  width: 2em;
+  height: 1em;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  transition: background-color 0.3s;
+  font-size: 50rpx;
+}
+
+.u-switch__node {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  z-index: 1;
+  background-color: #fff;
+  background-color: #fff;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1),
+    0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1),
+    0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
+  transition: transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05),
+    -webkit-transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
+  transition: transform cubic-bezier(0.3, 1.05, 0.4, 1.05);
+  transition: transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
+}
+
+.u-switch__loading {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-switch--on {
+  background-color: #1989fa;
+}
+
+.u-switch--on .u-switch__node {
+  transform: translateX(100%);
+}
+
+.u-switch--disabled {
+  opacity: 0.4;
+}
+
+.u-fixed-placeholder {
+  /* #ifndef APP-NVUE */
+  box-sizing: content-box;
+  /* #endif */
+}
+
+.u-tabbar {
+  &__content {
+    @include vue-flex;
+    align-items: center;
+    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 998;
+    /* #ifndef APP-NVUE */
+    box-sizing: content-box;
+    /* #endif */
+
+    &__circle__border {
+      border-radius: 100%;
+      width: 110rpx;
+      height: 110rpx;
+      top: -48rpx;
+      position: absolute;
+      z-index: 4;
+      background-color: #ffffff;
+      // 由于安卓的无能，导致只有3个tabbar item时，此css计算方式有误差
+      // 故使用js计算的形式来定位，此处不注释，是因为js计算有延后，避免出现位置闪动
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:after {
+        border-radius: 100px;
+      }
+    }
+
+    &__item {
+      flex: 1;
+      justify-content: center;
+      height: 100%;
+      padding: 12rpx 0;
+      @include vue-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+
+      &__button {
+        position: absolute;
+        top: 14rpx;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &__text {
+        color: $u-content-color;
+        font-size: 26rpx;
+        line-height: 28rpx;
+        position: absolute;
+        bottom: 14rpx;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &__circle {
+      position: relative;
+      @include vue-flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+      /* #ifndef APP-NVUE */
+      height: calc(100% - 1px);
+      /* #endif */
+
+      &__button {
+        width: 90rpx;
+        height: 90rpx;
+        border-radius: 100%;
+        @include vue-flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        background-color: #ffffff;
+        top: -40rpx;
+        left: 50%;
+        z-index: 6;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+.u-table {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+view,
+scroll-view {
+  box-sizing: border-box;
+}
+
+/* #ifndef APP-NVUE */
+::-webkit-scrollbar,
+::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+}
+/* #endif */
+
+.u-scroll-box {
+  position: relative;
+  /* #ifdef MP-TOUTIAO */
+  white-space: nowrap;
+  /* #endif */
+}
+
+/* #ifdef H5 */
+// 通过样式穿透，隐藏H5下，scroll-view下的滚动条
+scroll-view ::v-deep ::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+}
+/* #endif */
+
+.u-scroll-view {
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+}
+
+.u-tab-item {
+  position: relative;
+  /* #ifndef APP-NVUE */
+  display: inline-block;
+  /* #endif */
+  text-align: center;
+  transition-property: background-color, color;
+}
+
+.u-tab-bar {
+  position: absolute;
+  bottom: 0;
+}
+
+.u-tabs-scroll-flex {
+  @include vue-flex;
+  justify-content: space-between;
+}
+
+view,
+scroll-view {
+  box-sizing: border-box;
+}
+
+.u-tabs {
+  width: 100%;
+  transition-property: background-color, color;
+}
+
+/* #ifndef APP-NVUE */
+::-webkit-scrollbar,
+::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+}
+/* #endif */
+
+/* #ifdef H5 */
+// 通过样式穿透，隐藏H5下，scroll-view下的滚动条
+scroll-view ::v-deep ::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+/* #endif */
+
+.u-scroll-view {
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+}
+
+.u-tabs-scroll-box {
+  position: relative;
+}
+
+.u-tabs-scroll-flex {
+  @include vue-flex;
+  justify-content: space-between;
+}
+
+.u-tabs-scroll-flex .u-tabs-item {
+  flex: 1;
+}
+
+.u-tabs-item {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  transition-property: background-color, color, font-weight;
+}
+
+.content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.boxStyle {
+  pointer-events: none;
+  position: absolute;
+  transition-property: all;
+}
+
+.boxStyle2 {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  transition-property: all;
+  transform: translateY(-100%);
+}
+
+.itemBackgroundBox {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition-property: left, background-color;
+  @include vue-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemBackground {
+  height: 100%;
+  width: 100%;
+  transition-property: all;
+}
+
+.u-scroll-bar {
+  position: absolute;
+  bottom: 4rpx;
+}
+
+.u-tag {
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 6rpx;
+  /* #ifndef APP-NVUE */
+  display: inline-block;
+  /* #endif */
+  line-height: 1;
+}
+
+.u-size-default {
+  font-size: 22rpx;
+  padding: 12rpx 22rpx;
+}
+
+.u-size-mini {
+  font-size: 20rpx;
+  padding: 6rpx 12rpx;
+}
+
+.u-mode-light-primary {
+  background-color: $u-type-primary-light;
+  color: $u-type-primary;
+  border: 1px solid $u-type-primary-disabled;
+}
+
+.u-mode-light-success {
+  background-color: $u-type-success-light;
+  color: $u-type-success;
+  border: 1px solid $u-type-success-disabled;
+}
+
+.u-mode-light-error {
+  background-color: $u-type-error-light;
+  color: $u-type-error;
+  border: 1px solid $u-type-error-disabled;
+}
+
+.u-mode-light-warning {
+  background-color: $u-type-warning-light;
+  color: $u-type-warning;
+  border: 1px solid $u-type-warning-disabled;
+}
+
+.u-mode-light-info {
+  background-color: $u-type-info-light;
+  color: $u-type-info;
+  border: 1px solid $u-type-info-disabled;
+}
+
+.u-mode-dark-primary {
+  background-color: $u-type-primary;
+  color: #ffffff;
+}
+
+.u-mode-dark-success {
+  background-color: $u-type-success;
+  color: #ffffff;
+}
+
+.u-mode-dark-error {
+  background-color: $u-type-error;
+  color: #ffffff;
+}
+
+.u-mode-dark-warning {
+  background-color: $u-type-warning;
+  color: #ffffff;
+}
+
+.u-mode-dark-info {
+  background-color: $u-type-info;
+  color: #ffffff;
+}
+
+.u-mode-plain-primary {
+  background-color: #ffffff;
+  color: $u-type-primary;
+  border: 1px solid $u-type-primary;
+}
+
+.u-mode-plain-success {
+  background-color: #ffffff;
+  color: $u-type-success;
+  border: 1px solid $u-type-success;
+}
+
+.u-mode-plain-error {
+  background-color: #ffffff;
+  color: $u-type-error;
+  border: 1px solid $u-type-error;
+}
+
+.u-mode-plain-warning {
+  background-color: #ffffff;
+  color: $u-type-warning;
+  border: 1px solid $u-type-warning;
+}
+
+.u-mode-plain-info {
+  background-color: #ffffff;
+  color: $u-type-info;
+  border: 1px solid $u-type-info;
+}
+
+.u-disabled {
+  opacity: 0.55;
+}
+
+.u-shape-circle {
+  border-radius: 100rpx;
+}
+
+.u-shape-circleRight {
+  border-radius: 0 100rpx 100rpx 0;
+}
+
+.u-shape-circleLeft {
+  border-radius: 100rpx 0 0 100rpx;
+}
+
+.u-close-icon {
+  margin-left: 14rpx;
+  font-size: 22rpx;
+  color: $u-type-success;
+}
+
+.u-icon-wrap {
+  display: inline-flex;
+  transform: scale(0.86);
+}
+
+.u-td {
+  @include vue-flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  font-size: 28rpx;
+  color: $u-content-color;
+  align-self: stretch;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.u-th {
+  @include vue-flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  font-size: 28rpx;
+  color: $u-main-color;
+  font-weight: bold;
+  background-color: rgb(245, 246, 248);
+}
+
+.u-time-axis {
+  padding-left: 40rpx;
+  position: relative;
+}
+
+.u-time-axis::before {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 12rpx;
+  width: 1px;
+  bottom: 0;
+  border-left: 1px solid #ddd;
+  transform-origin: 0 0;
+  transform: scaleX(0.5);
+}
+
+.u-time-axis-item {
+  @include vue-flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin-bottom: 32rpx;
+}
+
+.u-time-axis-node {
+  position: absolute;
+  top: 12rpx;
+  left: -40rpx;
+  transform-origin: 0;
+  transform: translateX(-50%);
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  font-size: 24rpx;
+}
+
+.u-dot {
+  height: 16rpx;
+  width: 16rpx;
+  border-radius: 100rpx;
+  background: #ddd;
+}
+
+.u-toast {
+  position: fixed;
+  z-index: -1;
+  transition: opacity 0.3s;
+  text-align: center;
+  color: #fff;
+  border-radius: 8rpx;
+  background: #585858;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  opacity: 0;
+  pointer-events: none;
+  padding: 18rpx 40rpx;
+}
+
+.u-toast.u-show {
+  opacity: 1;
+}
+
+.u-icon {
+  margin-right: 10rpx;
+  @include vue-flex;
+  align-items: center;
+  line-height: normal;
+}
+
+.u-position-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* #ifndef APP-NVUE */
+  max-width: 70%;
+  /* #endif */
+}
+
+.u-position-top {
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.u-position-bottom {
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.u-type-primary {
+  color: $u-type-primary;
+  background-color: $u-type-primary-light;
+  border: 1px solid rgb(215, 234, 254);
+}
+
+.u-type-success {
+  color: $u-type-success;
+  background-color: $u-type-success-light;
+  border: 1px solid #bef5c8;
+}
+
+.u-type-error {
+  color: $u-type-error;
+  background-color: $u-type-error-light;
+  border: 1px solid #fde2e2;
+}
+
+.u-type-warning {
+  color: $u-type-warning;
+  background-color: $u-type-warning-light;
+  border: 1px solid #faecd8;
+}
+
+.u-type-info {
+  color: $u-type-info;
+  background-color: $u-type-info-light;
+  border: 1px solid #ebeef5;
+}
+
+.u-type-default {
+  color: #fff;
+  background-color: #585858;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+// 顶部弹出类型样式
+.u-tips {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  padding: 20rpx 30rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  left: 0;
+  right: 0;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  // 此处为最核心点，translateY(-100%)意味着将其从Y轴隐藏（隐藏到顶部(h5)或者说导航栏(app)下面）
+  transform: translateY(-100%);
+  transition: all 0.35s linear;
+}
+
+.u-tip-show {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 99;
+}
+
+.u-primary {
+  background: $u-type-primary;
+}
+
+.u-success {
+  background: $u-type-success;
+}
+
+.u-warning {
+  background: $u-type-warning;
+}
+
+.u-error {
+  background: $u-type-error;
+}
+
+.u-info {
+  background: $u-type-info;
+}
+
+.u-tr {
+  @include vue-flex;
+}
+
+.u-upload {
+  @include vue-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.u-list-item {
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  margin: 10rpx;
+  background: rgb(244, 245, 246);
+  position: relative;
+  border-radius: 10rpx;
+  /* #ifndef APP-NVUE */
+  display: flex;
+  /* #endif */
+  align-items: center;
+  justify-content: center;
+}
+
+.u-preview-wrap {
+  border: 1px solid rgb(235, 236, 238);
+}
+
+.u-add-wrap {
+  flex-direction: column;
+  color: $u-content-color;
+  font-size: 26rpx;
+}
+
+.u-add-tips {
+  margin-top: 20rpx;
+  line-height: 40rpx;
+}
+
+.u-add-wrap__hover {
+  background-color: rgb(235, 236, 238);
+}
+
+.u-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.u-delete-icon {
+  position: absolute;
+  top: 6rpx;
+  right: 6rpx;
+  z-index: 10;
+  background-color: $u-type-error;
+  border-radius: 100rpx;
+  width: 36rpx;
+  height: 36rpx;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-icon {
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-success-icon {
+  position: absolute;
+  bottom: 6rpx;
+  right: 6rpx;
+  z-index: 10;
+  background-color: #5ac725;
+  border-radius: 100rpx;
+  width: 36rpx;
+  height: 36rpx;
+  @include vue-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-progress {
+  position: absolute;
+  bottom: 10rpx;
+  left: 8rpx;
+  right: 8rpx;
+  z-index: 9;
+  width: auto;
+}
+
+.u-error-btn {
+  color: #ffffff;
+  background-color: $u-type-error;
+  font-size: 20rpx;
+  padding: 4px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  line-height: 1;
+}
+
+.u-code-wrap {
+  width: 0;
+  height: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.u-waterfall {
+  @include vue-flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.u-column {
+  @include vue-flex;
+  flex: 1;
+  flex-direction: column;
+  height: auto;
+}
+
+.u-image {
+  width: 100%;
+}
