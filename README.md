@@ -1,4 +1,4 @@
-# uview-custom-widget
+# uview-custom-form
 > uview自定义组件模板，uniapp + uview 技术栈，用于开发APP和各类小程序自定义组件（默认支持uview ui库）。
 
 ### 目录说明
