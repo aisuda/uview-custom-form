@@ -35,8 +35,8 @@ const InfoCardPlugin = {
             controls: [
               {
                 type: 'tpl',
-                tpl: '暂无数据配置项'
-              }
+                tpl: '暂无数据配置项',
+              },
             ],
           },
         ],

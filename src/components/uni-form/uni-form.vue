@@ -1,5 +1,9 @@
 <template>
   <view class="wrap">
+    <view class="pickerColor">
+      <uv-pick-color ref="pickerColor" @confirm="confirm"></uv-pick-color>
+      <button @click="openColor">打开颜色选择器</button>
+    </view>
     <u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
       <u-form-item
         :leftIconStyle="{ color: '#888', fontSize: '32rpx' }"
@@ -211,9 +215,9 @@
     </view>
   </view>
 </template>
-
 <script>
 import './uni-form.scss';
+import uvPickColor from './uv-pick-color/components/uv-pick-color/uv-pick-color.vue';
 export default {
   data() {
     let that = this;
@@ -476,7 +480,16 @@ export default {
   onReady() {
     this.$refs.uForm.setRules(this.rules);
   },
+  components: {
+    uvPickColor,
+  },
   methods: {
+    openColor() {
+      this.$refs.pickerColor.open();
+    },
+    confirm(e) {
+      console.log('confirm', e);
+    },
     submit() {
       this.$refs.uForm.validate((valid) => {
         if (valid) {
