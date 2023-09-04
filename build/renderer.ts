@@ -9,4 +9,6 @@ registerRenderer(InfoCard, {
   framework: 'vue3',
 });
 
-(window as any).__uniConfig = {};
+(window as any).__uniConfig = {
+  router: {}
+};

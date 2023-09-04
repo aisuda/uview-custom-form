@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
         ...commonConfig,
         build: {
           // https://vitejs.dev/config/build-options.html#build-minify
-          minify: true,
+          minify: false,
           emptyOutDir: false, // 备注：该配置项无效
           rollupOptions: {
             // https://rollupjs.org/guide/en/#big-list-of-options
