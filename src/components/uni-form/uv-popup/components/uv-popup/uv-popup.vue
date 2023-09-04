@@ -93,11 +93,6 @@ import uvIcon from '../../../uv-icon/components/uv-icon/uv-icon.vue';
  */
 export default {
   name: 'uv-popup',
-  components: {
-    // #ifdef H5
-    keypress,
-    // #endif
-  },
   mixins: [mpMixin, mixin],
   emits: ['change', 'maskClick'],
   props: {
@@ -271,6 +266,9 @@ export default {
     uvOverlay,
     uvStatusBar,
     uvIcon,
+    // #ifdef H5
+    keypress,
+    // #endif
   },
   // #ifndef VUE3
   // TODO vue2

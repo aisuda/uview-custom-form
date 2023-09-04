@@ -38631,12 +38631,9 @@ var __publicField = (obj, key, value) => {
     }, 8, ["onClick", "class"]);
   }
   const uvIcon = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__scopeId", "data-v-f7944de9"]]);
-  const uvPopup_vue_vue_type_style_index_0_scoped_52e901d7_lang = "";
+  const uvPopup_vue_vue_type_style_index_0_scoped_fcbcb35e_lang = "";
   const _sfc_main$3 = {
     name: "uv-popup",
-    components: {
-      keypress
-    },
     mixins: [mpMixin, mixin],
     emits: ["change", "maskClick"],
     props: {
@@ -38802,7 +38799,8 @@ var __publicField = (obj, key, value) => {
       uvSafeBottom,
       uvOverlay,
       uvStatusBar,
-      uvIcon
+      uvIcon,
+      keypress
     },
     // TODO vue3
     unmounted() {
@@ -39065,7 +39063,7 @@ var __publicField = (obj, key, value) => {
       /* FORWARDED */
     }, 8, ["class", "style"])) : vue.createCommentVNode("v-if", true);
   }
-  const uvPopup = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__scopeId", "data-v-52e901d7"]]);
+  const uvPopup = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__scopeId", "data-v-fcbcb35e"]]);
   const props$1 = {
     props: {
       // 是否展示工具条

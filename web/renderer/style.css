@@ -3546,47 +3546,47 @@ uni-swiper-item[data-v-f7944de9] {
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.uv-popup[data-v-52e901d7] {
+.uv-popup[data-v-fcbcb35e] {
   position: fixed;
   z-index: 99;
 }
-.uv-popup.top[data-v-52e901d7], .uv-popup.left[data-v-52e901d7], .uv-popup.right[data-v-52e901d7] {
+.uv-popup.top[data-v-fcbcb35e], .uv-popup.left[data-v-fcbcb35e], .uv-popup.right[data-v-fcbcb35e] {
   top: var(--window-top);
 }
-.uv-popup .uv-popup__content[data-v-52e901d7] {
+.uv-popup .uv-popup__content[data-v-fcbcb35e] {
   display: block;
   position: relative;
 }
-.uv-popup .uv-popup__content.left[data-v-52e901d7], .uv-popup .uv-popup__content.right[data-v-52e901d7] {
+.uv-popup .uv-popup__content.left[data-v-fcbcb35e], .uv-popup .uv-popup__content.right[data-v-fcbcb35e] {
   padding-top: var(--window-top);
   flex: 1;
 }
-.uv-popup .uv-popup__content__close[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close[data-v-fcbcb35e] {
   position: absolute;
 }
-.uv-popup .uv-popup__content__close--hover[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close--hover[data-v-fcbcb35e] {
   opacity: 0.4;
 }
-.uv-popup .uv-popup__content__close--top-left[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close--top-left[data-v-fcbcb35e] {
   top: 15px;
   left: 15px;
 }
-.uv-popup .uv-popup__content__close--top-right[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close--top-right[data-v-fcbcb35e] {
   top: 15px;
   right: 15px;
 }
-.uv-popup .uv-popup__content__close--bottom-left[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close--bottom-left[data-v-fcbcb35e] {
   bottom: 15px;
   left: 15px;
 }
-.uv-popup .uv-popup__content__close--bottom-right[data-v-52e901d7] {
+.uv-popup .uv-popup__content__close--bottom-right[data-v-fcbcb35e] {
   right: 15px;
   bottom: 15px;
 }
-.fixforpc-z-index[data-v-52e901d7] {
+.fixforpc-z-index[data-v-fcbcb35e] {
   z-index: 999;
 }
-.fixforpc-top[data-v-52e901d7] {
+.fixforpc-top[data-v-fcbcb35e] {
   top: 0;
 }/**
  * 这里是uni-app内置的常用样式变量
