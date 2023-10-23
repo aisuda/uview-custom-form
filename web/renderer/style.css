@@ -3905,27 +3905,27 @@ uni-swiper-item[data-v-b5824377] {
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.agreement[data-v-2846014b] {
+.agreement[data-v-53420418] {
   display: flex;
   align-items: center;
   margin: 1.25rem 0;
 }
-.agreement .agreement-text[data-v-2846014b] {
+.agreement .agreement-text[data-v-53420418] {
   padding-left: 0.25rem;
   color: #909399;
 }
-.item[data-v-2846014b] {
+.item[data-v-53420418] {
   display: flex;
   padding: 0.625rem;
 }
-uni-image[data-v-2846014b] {
+uni-image[data-v-53420418] {
   width: 3.75rem;
   flex: 0 0 3.75rem;
   height: 3.75rem;
   margin-right: 0.625rem;
   border-radius: 0.375rem;
 }
-.title[data-v-2846014b] {
+.title[data-v-53420418] {
   text-align: left;
   font-size: 0.875rem;
   color: #606266;

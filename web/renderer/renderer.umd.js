@@ -605,7 +605,7 @@ var __publicField = (obj, key, value) => {
     };
   }
   /*!
-    * vue-router v4.2.4
+    * vue-router v4.2.5
     * (c) 2023 Eduardo San Martin Morote
     * @license MIT
     */
@@ -40057,7 +40057,7 @@ var __publicField = (obj, key, value) => {
     }, 8, ["close-on-click-overlay", "onChange"]);
   }
   const uvPickColor = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b5824377"]]);
-  const uniForm_vue_vue_type_style_index_0_scoped_2846014b_lang = "";
+  const uniForm_vue_vue_type_style_index_0_scoped_53420418_lang = "";
   const _sfc_main = {
     data() {
       return {
@@ -40376,6 +40376,16 @@ var __publicField = (obj, key, value) => {
             console.log("验证失败");
           }
         });
+      },
+      eventClick1() {
+        if (this.store.handleAction) {
+          this.store.handleAction("click", this);
+        }
+      },
+      eventClick2() {
+        if (this.store.handleAction) {
+          this.store.handleAction("click2", this);
+        }
       },
       // 点击actionSheet回调
       actionSheetCallback(index2) {
@@ -40798,6 +40808,20 @@ var __publicField = (obj, key, value) => {
           _: 1
           /* STABLE */
         }),
+        vue.createVNode(_component_u_button, { onClick: $options.eventClick1 }, {
+          default: vue.withCtx(() => [
+            vue.createTextVNode("测试点击事件1")
+          ]),
+          _: 1
+          /* STABLE */
+        }, 8, ["onClick"]),
+        vue.createVNode(_component_u_button, { onClick: $options.eventClick2 }, {
+          default: vue.withCtx(() => [
+            vue.createTextVNode("测试点击事件2")
+          ]),
+          _: 1
+          /* STABLE */
+        }, 8, ["onClick"]),
         vue.createVNode(_component_u_button, { onClick: $options.submit }, {
           default: vue.withCtx(() => [
             vue.createTextVNode("提交")
@@ -40984,7 +41008,7 @@ var __publicField = (obj, key, value) => {
       /* STABLE */
     });
   }
-  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2846014b"]]);
+  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-53420418"]]);
   registerRenderer(InfoCard, {
     type: "uni-form",
     framework: "vue3"

@@ -23,6 +23,16 @@ const InfoCardPlugin = {
       style: {},
     },
   },
+  events: [
+    {
+      eventName: 'click',
+      eventLabel: '点击事件1',
+    },
+    {
+      eventName: 'click2',
+      eventLabel: '点击事件2',
+    }
+  ],
   panelControls: {
     type: 'tabs',
     tabs: [
@@ -92,6 +102,16 @@ const InfoCardPlugin = {
               type: 'boxModel',
               label: false,
             },
+          },
+        ],
+      },
+      {
+        title: '事件',
+        body: [
+          {
+            name: 'data.event',
+            type: 'event',
+            label: false,
           },
         ],
       },
