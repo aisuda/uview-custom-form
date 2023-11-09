@@ -40057,7 +40057,7 @@ var __publicField = (obj, key, value) => {
     }, 8, ["close-on-click-overlay", "onChange"]);
   }
   const uvPickColor = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b5824377"]]);
-  const uniForm_vue_vue_type_style_index_0_scoped_53420418_lang = "";
+  const uniForm_vue_vue_type_style_index_0_scoped_a4d77441_lang = "";
   const _sfc_main = {
     data() {
       return {
@@ -40343,7 +40343,8 @@ var __publicField = (obj, key, value) => {
               backgroundColor: "#dd524d"
             }
           }
-        ]
+        ],
+        debounceClick1: null
       };
     },
     onLoad() {
@@ -40377,9 +40378,25 @@ var __publicField = (obj, key, value) => {
           }
         });
       },
+      debounce(fx) {
+        let timeout2 = null;
+        return function() {
+          if (timeout2)
+            clearTimeout(timeout2);
+          timeout2 = setTimeout(fx, 1500);
+        };
+      },
       eventClick1() {
-        if (this.store.handleAction) {
-          this.store.handleAction("click", this);
+        console.log("debounce click。");
+        if (this.debounceClick1) {
+          this.debounceClick1();
+        } else {
+          this.debounceClick1 = this.debounce(() => {
+            if (this.store.handleAction) {
+              this.store.handleAction("click", this);
+            }
+          });
+          this.debounceClick1();
         }
       },
       eventClick2() {
@@ -40815,13 +40832,15 @@ var __publicField = (obj, key, value) => {
           _: 1
           /* STABLE */
         }, 8, ["onClick"]),
-        vue.createVNode(_component_u_button, { onClick: $options.eventClick2 }, {
+        vue.createVNode(_component_u_button, {
+          onClick: _cache[13] || (_cache[13] = ($event) => $options.debounce($options.eventClick2)())
+        }, {
           default: vue.withCtx(() => [
             vue.createTextVNode("测试点击事件2")
           ]),
           _: 1
           /* STABLE */
-        }, 8, ["onClick"]),
+        }),
         vue.createVNode(_component_u_button, { onClick: $options.submit }, {
           default: vue.withCtx(() => [
             vue.createTextVNode("提交")
@@ -40832,20 +40851,20 @@ var __publicField = (obj, key, value) => {
         vue.createVNode(_component_u_action_sheet, {
           list: $data.actionSheetList,
           modelValue: $data.actionSheetShow,
-          "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.actionSheetShow = $event),
+          "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.actionSheetShow = $event),
           onClick: $options.actionSheetCallback
         }, null, 8, ["list", "modelValue", "onClick"]),
         vue.createVNode(_component_u_select, {
           mode: "single-column",
           list: $data.selectList,
           modelValue: $data.selectShow,
-          "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.selectShow = $event),
+          "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.selectShow = $event),
           onConfirm: $options.selectConfirm
         }, null, 8, ["list", "modelValue", "onConfirm"]),
         vue.createVNode(_component_u_picker, {
           mode: "region",
           modelValue: $data.pickerShow,
-          "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.pickerShow = $event),
+          "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.pickerShow = $event),
           onConfirm: $options.regionConfirm
         }, null, 8, ["modelValue", "onConfirm"]),
         vue.createVNode(_component_u_verification_code, {
@@ -41008,7 +41027,7 @@ var __publicField = (obj, key, value) => {
       /* STABLE */
     });
   }
-  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-53420418"]]);
+  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a4d77441"]]);
   registerRenderer(InfoCard, {
     type: "uni-form",
     framework: "vue3"

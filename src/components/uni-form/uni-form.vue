@@ -159,8 +159,6 @@
       <u-checkbox v-model="check" @change="checkboxChange"></u-checkbox>
       <view class="agreement-text"> 勾选代表同意uView的版权协议 </view>
     </view>
-    <u-button @click="eventClick1">测试点击事件1</u-button>
-    <u-button @click="eventClick2">测试点击事件2</u-button>
     <u-button @click="submit">提交</u-button>
     <u-action-sheet
       :list="actionSheetList"
@@ -559,16 +557,6 @@ export default {
           console.log('验证失败');
         }
       });
-    },
-    eventClick1() {
-      if (this.store.handleAction) {
-        this.store.handleAction('click', this);
-      }
-    },
-    eventClick2() {
-      if (this.store.handleAction) {
-        this.store.handleAction('click2', this);
-      }
     },
     // 点击actionSheet回调
     actionSheetCallback(index) {
