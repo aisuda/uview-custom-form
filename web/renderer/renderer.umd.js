@@ -605,8 +605,8 @@ var __publicField = (obj, key, value) => {
     };
   }
   /*!
-    * vue-router v4.2.5
-    * (c) 2023 Eduardo San Martin Morote
+    * vue-router v4.3.2
+    * (c) 2024 Eduardo San Martin Morote
     * @license MIT
     */
   var NavigationType;
@@ -11273,6 +11273,26 @@ var __publicField = (obj, key, value) => {
   function code$1(value, len = 6) {
     return new RegExp(`^\\d{${len}}$`).test(value);
   }
+  function func$1(value) {
+    return typeof value === "function";
+  }
+  function promise$1(value) {
+    return object$2(value) && func$1(value.then) && func$1(value.catch);
+  }
+  function image$2(value) {
+    const newValue = value.split("?")[0];
+    return new RegExp(/\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)$/).test(newValue);
+  }
+  function video$1(value) {
+    const newValue = value.split("?")[0];
+    return new RegExp(/\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv|m3u8|3gp)$/).test(newValue);
+  }
+  function regExp$1(o2) {
+    return o2 && Object.prototype.toString.call(o2) === "[object RegExp]";
+  }
+  function string$2(value) {
+    return typeof value === "string";
+  }
   const test$1 = {
     email: email$1,
     mobile: mobile$1,
@@ -11296,7 +11316,13 @@ var __publicField = (obj, key, value) => {
     landline: landline$1,
     object: object$2,
     array: array$2,
-    code: code$1
+    code: code$1,
+    func: func$1,
+    promise: promise$1,
+    video: video$1,
+    image: image$2,
+    regExp: regExp$1,
+    string: string$2
   };
   class Request {
     // 设置全局默认配置
@@ -11855,7 +11881,7 @@ var __publicField = (obj, key, value) => {
       return 0;
     }
   }
-  function trim$1(str, pos = "both") {
+  function trim$2(str, pos = "both") {
     if (pos == "both") {
       return str.replace(/^\s+|\s+$/g, "");
     } else if (pos == "left") {
@@ -11969,6 +11995,29 @@ var __publicField = (obj, key, value) => {
       }
     }
   }
+  function addStyle$1(customStyle, target = "object") {
+    if (test$1.empty(customStyle) || typeof customStyle === "object" && target === "object" || target === "string" && typeof customStyle === "string") {
+      return customStyle;
+    }
+    if (target === "object") {
+      customStyle = trim(customStyle);
+      const styleArray = customStyle.split(";");
+      const style = {};
+      for (let i = 0; i < styleArray.length; i++) {
+        if (styleArray[i]) {
+          const item = styleArray[i].split(":");
+          style[trim(item[0])] = trim(item[1]);
+        }
+      }
+      return style;
+    }
+    let string2 = "";
+    for (const i in customStyle) {
+      const key = i.replace(/([A-Z])/g, "-$1").toLowerCase();
+      string2 += `${key}:${customStyle[i]};`;
+    }
+    return trim(string2);
+  }
   let version = "1.10.1";
   const config = {
     v: version,
@@ -12024,7 +12073,7 @@ var __publicField = (obj, key, value) => {
     getParent,
     $parent: $parent$1,
     addUnit: addUnit$1,
-    trim: trim$1,
+    trim: trim$2,
     type: ["primary", "success", "error", "warning", "info"],
     http,
     toast: toast$1,
@@ -12032,7 +12081,8 @@ var __publicField = (obj, key, value) => {
     // uView配置信息相关，比如版本号
     zIndex,
     debounce,
-    throttle
+    throttle,
+    addStyle: addStyle$1
   };
   uni.$u = $u;
   const install = (Vue) => {
@@ -13342,34 +13392,44 @@ var __publicField = (obj, key, value) => {
     (function() {
       var hasOwn2 = {}.hasOwnProperty;
       function classNames() {
-        var classes = [];
+        var classes = "";
         for (var i = 0; i < arguments.length; i++) {
           var arg = arguments[i];
-          if (!arg)
-            continue;
-          var argType = typeof arg;
-          if (argType === "string" || argType === "number") {
-            classes.push(arg);
-          } else if (Array.isArray(arg)) {
-            if (arg.length) {
-              var inner = classNames.apply(null, arg);
-              if (inner) {
-                classes.push(inner);
-              }
-            }
-          } else if (argType === "object") {
-            if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
-              classes.push(arg.toString());
-              continue;
-            }
-            for (var key in arg) {
-              if (hasOwn2.call(arg, key) && arg[key]) {
-                classes.push(key);
-              }
-            }
+          if (arg) {
+            classes = appendClass(classes, parseValue2(arg));
           }
         }
-        return classes.join(" ");
+        return classes;
+      }
+      function parseValue2(arg) {
+        if (typeof arg === "string" || typeof arg === "number") {
+          return arg;
+        }
+        if (typeof arg !== "object") {
+          return "";
+        }
+        if (Array.isArray(arg)) {
+          return classNames.apply(null, arg);
+        }
+        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
+          return arg.toString();
+        }
+        var classes = "";
+        for (var key in arg) {
+          if (hasOwn2.call(arg, key) && arg[key]) {
+            classes = appendClass(classes, key);
+          }
+        }
+        return classes;
+      }
+      function appendClass(value, newClass) {
+        if (!newClass) {
+          return value;
+        }
+        if (value) {
+          return value + " " + newClass;
+        }
+        return value + newClass;
       }
       if (module2.exports) {
         classNames.default = classNames;
@@ -14119,10 +14179,10 @@ var __publicField = (obj, key, value) => {
       }
     }
   };
-  const uInput_vue_vue_type_style_index_0_scoped_feb8dd5e_lang = "";
+  const uInput_vue_vue_type_style_index_0_scoped_738b0ba8_lang = "";
   const _sfc_main$r = {
     name: "u-input",
-    emits: ["update:modelValue", "input", "change", "blur", "focus", "click", "touchstart"],
+    emits: ["update:modelValue", "input", "change", "confirm", "clear", "blur", "focus", "click", "touchstart"],
     mixins: [Emitter],
     props: {
       value: {
@@ -14374,6 +14434,7 @@ var __publicField = (obj, key, value) => {
       onClear(event) {
         this.$emit("input", "");
         this.$emit("update:modelValue", "");
+        this.$emit("clear");
       },
       inputClick() {
         this.$emit("click");
@@ -14500,7 +14561,7 @@ var __publicField = (obj, key, value) => {
       /* STABLE */
     }, 8, ["class", "style", "onClick"]);
   }
-  const __easycom_2$1 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-feb8dd5e"]]);
+  const __easycom_2$1 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$r], ["__scopeId", "data-v-738b0ba8"]]);
   function _extends() {
     _extends = Object.assign || function(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -15418,7 +15479,7 @@ var __publicField = (obj, key, value) => {
   };
   Schema.warning = warning;
   Schema.messages = messages;
-  const uFormItem_vue_vue_type_style_index_0_scoped_58603049_lang = "";
+  const uFormItem_vue_vue_type_style_index_0_scoped_79cafb1d_lang = "";
   Schema.warning = function() {
   };
   const _sfc_main$q = {
@@ -15570,7 +15631,7 @@ var __publicField = (obj, key, value) => {
       },
       // label的下划线
       elBorderBottom() {
-        return this.borderBottom !== "" ? this.borderBottom : this.parentData.borderBottom ? this.parentData.borderBottom : true;
+        return this.borderBottom !== "" ? this.borderBottom : typeof this.parentData.borderBottom === "boolean" ? this.parentData.borderBottom : true;
       },
       elInputAlign() {
         return this.inputAlign ? this.inputAlign : this.parentData.inputAlign ? this.parentData.inputAlign : "left";
@@ -15845,8 +15906,8 @@ var __publicField = (obj, key, value) => {
       /* FORWARDED */
     }, 8, ["class"]);
   }
-  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-58603049"]]);
-  const uCheckbox_vue_vue_type_style_index_0_scoped_7d69e826_lang = "";
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$q], ["__scopeId", "data-v-79cafb1d"]]);
+  const uCheckbox_vue_vue_type_style_index_0_scoped_409cd9b2_lang = "";
   const _sfc_main$p = {
     name: "u-checkbox",
     emits: ["update:modelValue", "input", "change"],
@@ -15899,6 +15960,11 @@ var __publicField = (obj, key, value) => {
       size: {
         type: [String, Number],
         default: ""
+      },
+      // 设置不确定状态，仅负责样式控制
+      indeterminate: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -15951,6 +16017,8 @@ var __publicField = (obj, key, value) => {
       },
       // checkbox内部的勾选图标，如果选中状态，为白色，否则为透明色即可
       iconColor() {
+        if (this.indeterminate)
+          return "#ffffff";
         return this.valueCom ? "#ffffff" : "transparent";
       },
       iconClass() {
@@ -15962,6 +16030,8 @@ var __publicField = (obj, key, value) => {
           classes.push("u-checkbox__icon-wrap--disabled");
         if (this.valueCom && this.isDisabled)
           classes.push("u-checkbox__icon-wrap--disabled--checked");
+        if (this.indeterminate === true)
+          classes.push("u-checkbox__icon-wrap--indeterminate");
         return classes.join(" ");
       },
       checkboxStyle() {
@@ -16055,12 +16125,19 @@ var __publicField = (obj, key, value) => {
           style: vue.normalizeStyle([$options.iconStyle])
         }, {
           default: vue.withCtx(() => [
-            vue.createVNode(_component_u_icon, {
+            $props.indeterminate ? (vue.openBlock(), vue.createBlock(_component_u_icon, {
+              key: 0,
+              class: "u-checkbox__icon-wrap__icon",
+              name: "minus",
+              size: $options.checkboxIconSize,
+              color: $options.iconColor
+            }, null, 8, ["size", "color"])) : (vue.openBlock(), vue.createBlock(_component_u_icon, {
+              key: 1,
               class: "u-checkbox__icon-wrap__icon",
               name: "checkbox-mark",
               size: $options.checkboxIconSize,
               color: $options.iconColor
-            }, null, 8, ["size", "color"])
+            }, null, 8, ["size", "color"]))
           ]),
           _: 1
           /* STABLE */
@@ -16083,7 +16160,7 @@ var __publicField = (obj, key, value) => {
       /* FORWARDED */
     }, 8, ["style"]);
   }
-  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-7d69e826"]]);
+  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$p], ["__scopeId", "data-v-409cd9b2"]]);
   const uCheckboxGroup_vue_vue_type_style_index_0_scoped_83093792_lang = "";
   const _sfc_main$o = {
     name: "u-checkbox-group",
@@ -17264,7 +17341,7 @@ var __publicField = (obj, key, value) => {
     })) : vue.createCommentVNode("v-if", true);
   }
   const __easycom_8 = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__scopeId", "data-v-11251491"]]);
-  const uForm_vue_vue_type_style_index_0_scoped_f876d144_lang = "";
+  const uForm_vue_vue_type_style_index_0_scoped_e007e42e_lang = "";
   const _sfc_main$j = {
     name: "u-form",
     props: {
@@ -17389,8 +17466,8 @@ var __publicField = (obj, key, value) => {
       /* FORWARDED */
     });
   }
-  const __easycom_9 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-f876d144"]]);
-  const uButton_vue_vue_type_style_index_0_scoped_daa7a5af_lang = "";
+  const __easycom_9 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__scopeId", "data-v-e007e42e"]]);
+  const uButton_vue_vue_type_style_index_0_scoped_f0d20854_lang = "";
   const _sfc_main$i = {
     name: "u-button",
     emits: ["click", "getphonenumber", "getuserinfo", "error", "opensetting", "launchapp", "chooseavatar"],
@@ -17696,7 +17773,7 @@ var __publicField = (obj, key, value) => {
       /* FORWARDED */
     }, 8, ["class", "hover-start-time", "hover-stay-time", "disabled", "form-type", "open-type", "app-parameter", "hover-stop-propagation", "send-message-title", "lang", "data-name", "session-from", "send-message-img", "show-message-card", "onGetphonenumber", "onGetuserinfo", "onError", "onOpensetting", "onLaunchapp", "onChooseavatar", "style", "hover-class", "loading"]);
   }
-  const __easycom_10 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-daa7a5af"]]);
+  const __easycom_10 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__scopeId", "data-v-f0d20854"]]);
   const uMask_vue_vue_type_style_index_0_scoped_47d621de_lang = "";
   const _sfc_main$h = {
     name: "u-mask",
@@ -18449,7 +18526,7 @@ var __publicField = (obj, key, value) => {
   const __easycom_11 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__scopeId", "data-v-3336f367"]]);
   const pickerViewColumn = "";
   const pickerView = "";
-  const uSelect_vue_vue_type_style_index_0_scoped_a0723afd_lang = "";
+  const uSelect_vue_vue_type_style_index_0_scoped_e06119c1_lang = "";
   const _sfc_main$e = {
     emits: ["update:modelValue", "input", "confirm"],
     props: {
@@ -18560,24 +18637,19 @@ var __publicField = (obj, key, value) => {
         // 列数
         columnNum: 0,
         // 列是否还在滑动中，微信小程序如果在滑动中就点确定，结果可能不准确
-        moving: false
+        moving: false,
+        reset: false
       };
     },
     watch: {
       // 在select弹起的时候，重新初始化所有数据
-      value: {
+      valueCom: {
         immediate: true,
         handler(val) {
-          if (val)
+          if (val) {
+            this.reset = true;
             setTimeout(() => this.init(), 10);
-          this.popupValue = val;
-        }
-      },
-      modelValue: {
-        immediate: true,
-        handler(val) {
-          if (val)
-            setTimeout(() => this.init(), 10);
+          }
           this.popupValue = val;
         }
       }
@@ -18585,6 +18657,13 @@ var __publicField = (obj, key, value) => {
     computed: {
       uZIndex() {
         return this.zIndex ? this.zIndex : this.$u.zIndex.popup;
+      },
+      valueCom() {
+        return this.modelValue;
+      },
+      // 用来兼容小程序、App、h5
+      showColumnCom() {
+        return true;
       }
     },
     methods: {
@@ -18595,6 +18674,7 @@ var __publicField = (obj, key, value) => {
       pickend() {
       },
       init() {
+        this.reset = false;
         this.setColumnNum();
         this.setDefaultSelector();
         this.setColumnData();
@@ -18649,10 +18729,11 @@ var __publicField = (obj, key, value) => {
         for (let i = 0; i < this.columnNum; i++) {
           tmp = this.columnData[i][this.defaultSelector[i]];
           let data = {
+            index: this.defaultSelector[i],
             value: tmp ? tmp[this.valueName] : null,
             label: tmp ? tmp[this.labelName] : null
           };
-          if (tmp && tmp.extra)
+          if (tmp && tmp.extra !== void 0)
             data.extra = tmp.extra;
           this.selectValue.push(data);
         }
@@ -18675,6 +18756,7 @@ var __publicField = (obj, key, value) => {
           columnIndex.map((item, index3) => {
             let data = this.columnData[index3][columnIndex[index3]];
             let tmp = {
+              index: columnIndex[index3],
               value: data ? data[this.valueName] : null,
               label: data ? data[this.labelName] : null
             };
@@ -18686,16 +18768,19 @@ var __publicField = (obj, key, value) => {
         } else if (this.mode == "single-column") {
           let data = this.columnData[0][columnIndex[0]];
           let tmp = {
+            index: columnIndex[0],
             value: data ? data[this.valueName] : null,
             label: data ? data[this.labelName] : null
           };
           if (data && data.extra !== void 0)
             tmp.extra = data.extra;
           this.selectValue.push(tmp);
+          this.lastSelectIndex = columnIndex;
         } else if (this.mode == "mutil-column") {
           columnIndex.map((item, index3) => {
             let data = this.columnData[index3][columnIndex[index3]];
             let tmp = {
+              index: columnIndex[index3],
               value: data ? data[this.valueName] : null,
               label: data ? data[this.labelName] : null
             };
@@ -18703,6 +18788,7 @@ var __publicField = (obj, key, value) => {
               tmp.extra = data.extra;
             this.selectValue.push(tmp);
           });
+          this.lastSelectIndex = columnIndex;
         }
       },
       close() {
@@ -18818,9 +18904,9 @@ var __publicField = (obj, key, value) => {
                       onPickend: $options.pickend
                     }, {
                       default: vue.withCtx(() => [
-                        (vue.openBlock(true), vue.createElementBlock(
+                        $options.showColumnCom ? (vue.openBlock(true), vue.createElementBlock(
                           vue.Fragment,
-                          null,
+                          { key: 0 },
                           vue.renderList($data.columnData, (item, index2) => {
                             return vue.openBlock(), vue.createBlock(
                               _component_v_uni_picker_view_column,
@@ -18877,7 +18963,7 @@ var __publicField = (obj, key, value) => {
                           }),
                           128
                           /* KEYED_FRAGMENT */
-                        ))
+                        )) : vue.createCommentVNode("v-if", true)
                       ]),
                       _: 1
                       /* STABLE */
@@ -18899,7 +18985,7 @@ var __publicField = (obj, key, value) => {
       /* STABLE */
     });
   }
-  const __easycom_12 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-a0723afd"]]);
+  const __easycom_12 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__scopeId", "data-v-e06119c1"]]);
   const provinces = [
     {
       code: "110000",
@@ -37192,13 +37278,13 @@ var __publicField = (obj, key, value) => {
       return customStyle;
     }
     if (target === "object") {
-      customStyle = trim(customStyle);
+      customStyle = trim$1(customStyle);
       const styleArray = customStyle.split(";");
       const style = {};
       for (let i = 0; i < styleArray.length; i++) {
         if (styleArray[i]) {
           const item = styleArray[i].split(":");
-          style[trim(item[0])] = trim(item[1]);
+          style[trim$1(item[0])] = trim$1(item[1]);
         }
       }
       return style;
@@ -37208,7 +37294,7 @@ var __publicField = (obj, key, value) => {
       const key = i.replace(/([A-Z])/g, "-$1").toLowerCase();
       string2 += `${key}:${customStyle[i]};`;
     }
-    return trim(string2);
+    return trim$1(string2);
   }
   function addUnit(value = "auto", unit = ((_c) => (_c = ((_b) => (_b = uni == null ? void 0 : uni.$uv) == null ? void 0 : _b.config)()) == null ? void 0 : _c.unit)() ? ((_e) => (_e = ((_d) => (_d = uni == null ? void 0 : uni.$uv) == null ? void 0 : _d.config)()) == null ? void 0 : _e.unit)() : "px") {
     value = String(value);
@@ -37366,7 +37452,7 @@ var __publicField = (obj, key, value) => {
     }
     return tips;
   }
-  function trim(str, pos = "both") {
+  function trim$1(str, pos = "both") {
     str = String(str);
     if (pos == "both") {
       return str.replace(/^\s+|\s+$/g, "");
@@ -37601,7 +37687,7 @@ var __publicField = (obj, key, value) => {
     timeFormat,
     timeFrom,
     toast,
-    trim,
+    trim: trim$1,
     type2icon
   }, Symbol.toStringTag, { value: "Module" }));
   const mixin = {
@@ -40057,7 +40143,7 @@ var __publicField = (obj, key, value) => {
     }, 8, ["close-on-click-overlay", "onChange"]);
   }
   const uvPickColor = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__scopeId", "data-v-b5824377"]]);
-  const uniForm_vue_vue_type_style_index_0_scoped_a4d77441_lang = "";
+  const uniForm_vue_vue_type_style_index_0_scoped_2846014b_lang = "";
   const _sfc_main = {
     data() {
       return {
@@ -40343,8 +40429,7 @@ var __publicField = (obj, key, value) => {
               backgroundColor: "#dd524d"
             }
           }
-        ],
-        debounceClick1: null
+        ]
       };
     },
     onLoad() {
@@ -40377,32 +40462,6 @@ var __publicField = (obj, key, value) => {
             console.log("验证失败");
           }
         });
-      },
-      debounce(fx) {
-        let timeout2 = null;
-        return function() {
-          if (timeout2)
-            clearTimeout(timeout2);
-          timeout2 = setTimeout(fx, 1500);
-        };
-      },
-      eventClick1() {
-        console.log("debounce click。");
-        if (this.debounceClick1) {
-          this.debounceClick1();
-        } else {
-          this.debounceClick1 = this.debounce(() => {
-            if (this.store.handleAction) {
-              this.store.handleAction("click", this);
-            }
-          });
-          this.debounceClick1();
-        }
-      },
-      eventClick2() {
-        if (this.store.handleAction) {
-          this.store.handleAction("click2", this);
-        }
       },
       // 点击actionSheet回调
       actionSheetCallback(index2) {
@@ -40825,22 +40884,6 @@ var __publicField = (obj, key, value) => {
           _: 1
           /* STABLE */
         }),
-        vue.createVNode(_component_u_button, { onClick: $options.eventClick1 }, {
-          default: vue.withCtx(() => [
-            vue.createTextVNode("测试点击事件1")
-          ]),
-          _: 1
-          /* STABLE */
-        }, 8, ["onClick"]),
-        vue.createVNode(_component_u_button, {
-          onClick: _cache[13] || (_cache[13] = ($event) => $options.debounce($options.eventClick2)())
-        }, {
-          default: vue.withCtx(() => [
-            vue.createTextVNode("测试点击事件2")
-          ]),
-          _: 1
-          /* STABLE */
-        }),
         vue.createVNode(_component_u_button, { onClick: $options.submit }, {
           default: vue.withCtx(() => [
             vue.createTextVNode("提交")
@@ -40851,20 +40894,20 @@ var __publicField = (obj, key, value) => {
         vue.createVNode(_component_u_action_sheet, {
           list: $data.actionSheetList,
           modelValue: $data.actionSheetShow,
-          "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.actionSheetShow = $event),
+          "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.actionSheetShow = $event),
           onClick: $options.actionSheetCallback
         }, null, 8, ["list", "modelValue", "onClick"]),
         vue.createVNode(_component_u_select, {
           mode: "single-column",
           list: $data.selectList,
           modelValue: $data.selectShow,
-          "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.selectShow = $event),
+          "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.selectShow = $event),
           onConfirm: $options.selectConfirm
         }, null, 8, ["list", "modelValue", "onConfirm"]),
         vue.createVNode(_component_u_picker, {
           mode: "region",
           modelValue: $data.pickerShow,
-          "onUpdate:modelValue": _cache[16] || (_cache[16] = ($event) => $data.pickerShow = $event),
+          "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.pickerShow = $event),
           onConfirm: $options.regionConfirm
         }, null, 8, ["modelValue", "onConfirm"]),
         vue.createVNode(_component_u_verification_code, {
@@ -41027,7 +41070,7 @@ var __publicField = (obj, key, value) => {
       /* STABLE */
     });
   }
-  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a4d77441"]]);
+  const InfoCard = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2846014b"]]);
   registerRenderer(InfoCard, {
     type: "uni-form",
     framework: "vue3"

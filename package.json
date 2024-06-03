@@ -1,6 +1,6 @@
 {
   "name": "uview-custom-form",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "uview版自定义表单组件模板（vue3技术栈），用于开发小程序表单类组件。",
   "keywords": [
     "自定义组件注册器",
@@ -11,7 +11,8 @@
   "author": "wibetter",
   "scripts": {
     "preview": "uni",
-    "devDebug": "amis dev",
+    "dev": "npm run build:h5 && amis dev",
+    "devDebug": "npm run build:h5 && amis dev",
     "linkDebug": "npm run build:h5 && amis linkDebug",
     "linkDebug2": "amis linkDebug",
     "build2lib": "npm run build:h5:plugin && npm run build:h5:renderer",
